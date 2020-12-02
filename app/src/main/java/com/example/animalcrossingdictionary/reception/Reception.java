@@ -1,6 +1,10 @@
 package com.example.animalcrossingdictionary.reception;
 
+import android.util.Log;
+
 import com.example.animalcrossingdictionary.entities.Fish;
+import com.example.animalcrossingdictionary.entities.FishList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -9,23 +13,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Reception {
 
-    public static void getUrl(String type) {
-        String url = com.example.animalcrossingdictionary.MainActivity.API_URL + "/" + type;
+    public static void getUrl() {
         Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("https://acnhapi.com/v1/fossils/1/")
+                            .baseUrl(GetRequest.URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
         GetRequest get = retrofit.create(GetRequest.class);
-        Call<Fish> fishCall = get.getFish();
-        fishCall.enqueue(new Callback<Fish>() {
+        Call<FishList> fishCall = get.getFish();
+        fishCall.enqueue(new Callback<FishList>() {
             @Override
-            public void onResponse(Call<Fish> call, Response<Fish> response) {
-                System.out.println(response.body().toString());
+            public void onResponse(Call<FishList> call, Response<FishList> response) {
+
+                Log.d("Retrofit", "Success");
             }
 
             @Override
-            public void onFailure(Call<Fish> call, Throwable t) {
-
+            public void onFailure(Call<FishList> call, Throwable t) {
+                Log.d("Retrofit", "Failure: " + t.getMessage());
             }
         });
     }
