@@ -2,8 +2,7 @@ package nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdi
 
 import android.util.Log;
 
-import nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdictionary.entities.FishList;
-
+import nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdictionary.entities.Fish;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,16 +17,15 @@ public class Reception {
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
         GetRequest get = retrofit.create(GetRequest.class);
-        Call<FishList> fishCall = get.getFish();
-        fishCall.enqueue(new Callback<FishList>() {
+        Call<Fish> fishCall = get.getFishes();
+        fishCall.enqueue(new Callback<Fish>() {
             @Override
-            public void onResponse(Call<FishList> call, Response<FishList> response) {
-
+            public void onResponse(Call<Fish> call, Response<Fish> response) {
                 Log.d("Retrofit", "Success");
             }
 
             @Override
-            public void onFailure(Call<FishList> call, Throwable t) {
+            public void onFailure(Call<Fish> call, Throwable t) {
                 Log.d("Retrofit", "Failure: " + t.getMessage());
             }
         });
