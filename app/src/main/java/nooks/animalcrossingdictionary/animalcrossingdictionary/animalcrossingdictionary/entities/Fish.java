@@ -1,4 +1,4 @@
-package com.example.animalcrossingdictionary.entities;
+package nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdictionary.entities;
 
 public class Fish {
 

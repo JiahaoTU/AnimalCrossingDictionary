@@ -1,9 +1,8 @@
-package com.example.animalcrossingdictionary.reception;
+package nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdictionary.reception;
 
 import android.util.Log;
 
-import com.example.animalcrossingdictionary.entities.Fish;
-import com.example.animalcrossingdictionary.entities.FishList;
+import nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdictionary.entities.FishList;
 
 import retrofit2.Call;
 import retrofit2.Callback;

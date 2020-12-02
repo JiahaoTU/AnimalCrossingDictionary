@@ -1,6 +1,4 @@
-package com.example.animalcrossingdictionary.entities;
-
-import java.util.List;
+package nooks.animalcrossingdictionary.animalcrossingdictionary.animalcrossingdictionary.entities;
 
 public class FishList {
     private Fish fishes;
