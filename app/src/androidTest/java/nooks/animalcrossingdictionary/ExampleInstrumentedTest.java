@@ -1,4 +1,4 @@
-package nooks.animalcrossingdictionary.animalcrossingdictionary;
+package nooks.animalcrossingdictionary;
 
 import android.content.Context;
 
