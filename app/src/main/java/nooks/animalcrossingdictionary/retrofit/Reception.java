@@ -3,7 +3,9 @@ package nooks.animalcrossingdictionary.retrofit;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.List;
 
+import nooks.animalcrossingdictionary.entities.fish.Fish;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,6 +23,7 @@ public class Reception {
         get.getString().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                 ResponseBody fish = response.body();
                 String jsonStr = null;
                 try {
@@ -31,10 +34,36 @@ public class Reception {
                 System.out.println(fish);
                 String a = new String();
                 Log.d("Retrofit", "Success: "+ jsonStr);
+                Log.d("Retrofit", "Success: "+ fish);
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("Retrofit", "Failure: " + t.getMessage());
+            }
+        });
+    }
+
+    public static void getSearch() {
+        retrofit2.Retrofit retrofit = new retrofit2.Retrofit.Builder()
+                .baseUrl(GetRequest.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        GetRequest get = retrofit.create(GetRequest.class);
+        get.getCards(new GetRequest.QueryParam("10")).enqueue(new Callback<GetRequest.QueryResponse>() {
+            @Override
+            public void onResponse(Call<GetRequest.QueryResponse> call, Response<GetRequest.QueryResponse> response) {
+
+                List<Fish> fish = response.body().getResults();
+
+                System.out.println(fish);
+                String a = new String();
+                Log.d("Retrofit", "Success: "+ fish.get(0).getId());
+                Log.d("Retrofit", "Success: "+ fish.size());
+            }
+
+            @Override
+            public void onFailure(Call<GetRequest.QueryResponse> call, Throwable t) {
                 Log.d("Retrofit", "Failure: " + t.getMessage());
             }
         });

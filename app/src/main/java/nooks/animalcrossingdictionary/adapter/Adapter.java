@@ -20,7 +20,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         public MyViewHolder_fish(View view) {
             super(view);
-            shadow = view.findViewById(R.id.item);
+            //shadow = view.findViewById(R.id.item);
         }
     }
 
