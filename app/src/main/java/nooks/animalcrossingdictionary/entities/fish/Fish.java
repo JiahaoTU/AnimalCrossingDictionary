@@ -2,18 +2,23 @@ package nooks.animalcrossingdictionary.entities.fish;
 
 import com.google.gson.annotations.SerializedName;
 
+import nooks.animalcrossingdictionary.entities.common.Name;
+
 public class Fish {
 
     private String id;
-
     @SerializedName("file-name")
     private String fileName;
-
     private Name name;
     private Availability availability;
     private String shadow;
     private int price;
+    @SerializedName("catch-phrase")
     private String catchPhrase;
+    @SerializedName("museum-phrase")
+    private String museumPhrase;
+    private String image_uri;
+    private String icon_uri;
 
     public Fish() {
     }
@@ -72,5 +77,29 @@ public class Fish {
 
     public void setCatchPhrase(String catchPhrase) {
         this.catchPhrase = catchPhrase;
+    }
+
+    public String getMuseumPhrase() {
+        return museumPhrase;
+    }
+
+    public void setMuseumPhrase(String museumPhrase) {
+        this.museumPhrase = museumPhrase;
+    }
+
+    public String getImage_uri() {
+        return image_uri;
+    }
+
+    public void setImage_uri(String image_uri) {
+        this.image_uri = image_uri;
+    }
+
+    public String getIcon_uri() {
+        return icon_uri;
+    }
+
+    public void setIcon_uri(String icon_uri) {
+        this.icon_uri = icon_uri;
     }
 }

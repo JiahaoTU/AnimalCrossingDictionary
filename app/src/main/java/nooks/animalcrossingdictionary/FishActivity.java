@@ -54,6 +54,7 @@ public class FishActivity extends AppCompatActivity {
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getId());
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getPrice());
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getCatchPhrase());
+                Log.d("Retrofit", "Success: "+ response.body().get(0).getAvailability().getLocation());
                 Log.d("Retrofit", "Success: "+ response.body().size());
             }
 
