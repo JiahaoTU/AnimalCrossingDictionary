@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.animalcrossingdictionary.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nooks.animalcrossingdictionary.adapter.Adapter;
@@ -33,6 +35,7 @@ public class FishActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleList);
 
         getData();
+
     }
 
     private void getData() {
@@ -46,16 +49,19 @@ public class FishActivity extends AppCompatActivity {
             public void onResponse(Call<List<Fish>> call, Response<List<Fish>> response) {
                 fishes = response.body();
 
-                /*Adapter adapter = new Adapter(fishes);
+                List<Fish> fishSearch = searchResult(fishes);
 
+                Adapter adapter = new Adapter(fishSearch);
                 recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
-                recyclerView.setAdapter(adapter);*/
+                recyclerView.setAdapter(adapter);
+
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getFileName());
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getId());
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getPrice());
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getCatchPhrase());
                 Log.d("Retrofit", "Success: "+ response.body().get(0).getAvailability().getLocation());
                 Log.d("Retrofit", "Success: "+ response.body().size());
+                Log.d("Retrofit", "Success: "+ fishes.size());
             }
 
             @Override
@@ -65,5 +71,28 @@ public class FishActivity extends AppCompatActivity {
         });
     }
 
+    private String shadow = null;
+
+    public void search(View view) {
+        shadow = "Smallest";
+        getData();
+    }
+
+
+
+    private List<Fish> searchResult(List<Fish> fishSource) {
+        List<Fish> fishResult = new ArrayList<>();
+        if(shadow != null) {
+            for (Fish fish: fishSource) {
+                if(fish.getShadow().contains(shadow)) {
+                    fishResult.add(fish);
+                }
+            }
+        } else {
+            fishResult = fishSource;
+        }
+
+        return fishResult;
+    }
 
 }

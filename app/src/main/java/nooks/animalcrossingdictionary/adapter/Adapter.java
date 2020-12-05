@@ -12,21 +12,25 @@ import com.example.animalcrossingdictionary.R;
 
 import java.util.List;
 
+import nooks.animalcrossingdictionary.entities.fish.Fish;
+
 public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static class MyViewHolder_fish extends RecyclerView.ViewHolder {
 
+        public TextView name;
         public TextView shadow;
 
         public MyViewHolder_fish(View view) {
             super(view);
-            //shadow = view.findViewById(R.id.item);
+            name = view.findViewById(R.id.name);
+            shadow = view.findViewById(R.id.shadow);
         }
     }
 
 
-    private List<String> listData;
-    public Adapter(List<String> data) {
+    private List<Fish> listData;
+    public Adapter(List<Fish> data) {
         this.listData = data;
     }
 
@@ -39,7 +43,8 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((MyViewHolder_fish)holder).shadow.setText(listData.get(position));
+        ((MyViewHolder_fish)holder).name.setText(listData.get(position).getFileName());
+        ((MyViewHolder_fish)holder).shadow.setText(listData.get(position).getShadow());
     }
 
     @Override

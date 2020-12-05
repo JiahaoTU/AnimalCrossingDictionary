@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nooks.animalcrossingdictionary.FishActivity">
+    tools:context="nooks.animalcrossingdictionary.FishActivity"
+    android:orientation="vertical">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="search"
+        android:text="testSearch"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleList"

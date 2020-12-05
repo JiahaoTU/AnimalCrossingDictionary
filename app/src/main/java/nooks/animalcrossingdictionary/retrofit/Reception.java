@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Reception {
 
-    public static void getUrl() {
+    public static void getJsonFish() {
         retrofit2.Retrofit retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl(GetRequest.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -44,29 +44,6 @@ public class Reception {
         });
     }
 
-    public static void getSearch() {
-        retrofit2.Retrofit retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(GetRequest.URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        GetRequest get = retrofit.create(GetRequest.class);
-        get.getCards(new GetRequest.QueryParam("10")).enqueue(new Callback<GetRequest.QueryResponse>() {
-            @Override
-            public void onResponse(Call<GetRequest.QueryResponse> call, Response<GetRequest.QueryResponse> response) {
 
-                List<Fish> fish = response.body().getResults();
-
-                System.out.println(fish);
-                String a = new String();
-                Log.d("Retrofit", "Success: "+ fish.get(0).getId());
-                Log.d("Retrofit", "Success: "+ fish.size());
-            }
-
-            @Override
-            public void onFailure(Call<GetRequest.QueryResponse> call, Throwable t) {
-                Log.d("Retrofit", "Failure: " + t.getMessage());
-            }
-        });
-    }
 
 }
