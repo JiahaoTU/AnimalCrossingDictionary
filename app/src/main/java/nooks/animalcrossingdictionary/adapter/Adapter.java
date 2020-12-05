@@ -1,5 +1,6 @@
 package nooks.animalcrossingdictionary.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         this.listData = data;
     }
 
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,12 +45,14 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((MyViewHolder_fish)holder).name.setText(listData.get(position).getFileName());
-        ((MyViewHolder_fish)holder).shadow.setText(listData.get(position).getShadow());
+        ((MyViewHolder_fish)holder).name.setText(listData.get(position).getName().getNameEUen());
+        ((MyViewHolder_fish)holder).shadow.setText(listData.get(position).getShadow().split(" ")[0]);
+
     }
 
     @Override
     public int getItemCount() {
         return listData.size();
     }
+
 }

@@ -4,19 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nooks.animalcrossingdictionary.MainActivity">
+    tools:context="nooks.animalcrossingdictionary.MainActivity"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="200dp">
+        android:layout_height="400dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/fishButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:onClick="fishButton"
-            android:text="fish"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <Button
+                android:id="@+id/fishButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="fishButton"
+                android:text="Fish"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/bugsButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="bugsButton"
+                android:text="Bugs"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <Button
+                android:id="@+id/seaCreaturesButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="seaCreaturesButton"
+                android:text="Sea Creatures"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/fossilsButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="fossilsButton"
+                android:text="Fossils"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <Button
+                android:id="@+id/villagersButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="villagersButton"
+                android:text="Villagers"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/songsButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:onClick="songsButton"
+                android:text="Songs"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

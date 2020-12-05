@@ -1,18 +1,17 @@
-package nooks.animalcrossingdictionary.entities.fish;
+package nooks.animalcrossingdictionary.entities.bugs;
 
 import com.google.gson.annotations.SerializedName;
 
 import nooks.animalcrossingdictionary.entities.common.Availability;
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Fish {
+public class Bugs {
 
     private String id;
     @SerializedName("file-name")
     private String fileName;
     private Name name;
     private Availability availability;
-    private String shadow;
     private int price;
     @SerializedName("catch-phrase")
     private String catchPhrase;
@@ -21,7 +20,8 @@ public class Fish {
     private String image_uri;
     private String icon_uri;
 
-    public Fish() {
+    public Bugs() {
+
     }
 
     public String getId() {
@@ -54,14 +54,6 @@ public class Fish {
 
     public void setAvailability(Availability availability) {
         this.availability = availability;
-    }
-
-    public String getShadow() {
-        return shadow;
-    }
-
-    public void setShadow(String shadow) {
-        this.shadow = shadow;
     }
 
     public int getPrice() {
@@ -103,5 +95,4 @@ public class Fish {
     public void setIcon_uri(String icon_uri) {
         this.icon_uri = icon_uri;
     }
-
 }

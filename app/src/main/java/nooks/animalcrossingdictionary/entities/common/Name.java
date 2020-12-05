@@ -8,6 +8,8 @@ public class Name {
     private String nameEUen;
     @SerializedName("name-EUfr")
     private String nameEUfr;
+    @SerializedName("name-CNzh")
+    private String nameCNzh;
 
     public Name() {
 
@@ -27,5 +29,13 @@ public class Name {
 
     public void setNameEUfr(String nameEUfr) {
         this.nameEUfr = nameEUfr;
+    }
+
+    public String getNameCNzh() {
+        return nameCNzh;
+    }
+
+    public void setNameCNzh(String nameCNzh) {
+        this.nameCNzh = nameCNzh;
     }
 }

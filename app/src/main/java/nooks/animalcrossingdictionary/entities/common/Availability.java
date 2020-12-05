@@ -1,4 +1,4 @@
-package nooks.animalcrossingdictionary.entities.fish;
+package nooks.animalcrossingdictionary.entities.common;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -11,8 +11,8 @@ public class Availability {
     private String time;
     private Boolean isAllDay;
     private Boolean isAllYear;
-    private String location;
-    private String rarity;
+    private String location;    //only fish, bugs
+    private String rarity;  //only fish, bugs
     @SerializedName("month-array-northern")
     private String[] monthArrayNorthern;
     @SerializedName("month-array-southern")

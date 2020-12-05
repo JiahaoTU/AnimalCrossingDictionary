@@ -5,7 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nooks.animalcrossingdictionary.FishActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Fish"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:textSize="40sp"/>
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/north"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="North"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/south"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="South"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Search name"
+            android:maxLength="20"
+            android:maxLines="1"/>
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Search"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <Spinner
+            android:id="@+id/month"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Spinner
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Spinner
+            android:id="@+id/rarity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
 
     <Button
         android:layout_width="match_parent"

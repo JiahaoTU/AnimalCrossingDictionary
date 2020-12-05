@@ -27,6 +27,9 @@ public class FishActivity extends AppCompatActivity {
 
     private List<Fish> fishes;
 
+    private List<String> location;
+    private List<String> rarity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +58,11 @@ public class FishActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
                 recyclerView.setAdapter(adapter);
 
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getFileName());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getId());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getPrice());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getCatchPhrase());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getAvailability().getLocation());
+                Log.d("Retrofit", "Success: "+ response.body().get(0));
+                Log.d("Retrofit", "Success: "+ response.body().get(0));
+                Log.d("Retrofit", "Success: "+ response.body().get(0));
+                Log.d("Retrofit", "Success: "+ response.body().get(0));
+                Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().size());
                 Log.d("Retrofit", "Success: "+ fishes.size());
             }

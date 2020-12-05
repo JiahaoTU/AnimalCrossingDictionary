@@ -1,27 +1,23 @@
-package nooks.animalcrossingdictionary.entities.fish;
+package nooks.animalcrossingdictionary.entities.fossils;
 
 import com.google.gson.annotations.SerializedName;
 
 import nooks.animalcrossingdictionary.entities.common.Availability;
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Fish {
+public class Fossils {
 
     private String id;
     @SerializedName("file-name")
     private String fileName;
     private Name name;
-    private Availability availability;
-    private String shadow;
     private int price;
-    @SerializedName("catch-phrase")
-    private String catchPhrase;
     @SerializedName("museum-phrase")
     private String museumPhrase;
     private String image_uri;
-    private String icon_uri;
 
-    public Fish() {
+    public Fossils() {
+
     }
 
     public String getId() {
@@ -48,36 +44,12 @@ public class Fish {
         this.name = name;
     }
 
-    public Availability getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
-    }
-
-    public String getShadow() {
-        return shadow;
-    }
-
-    public void setShadow(String shadow) {
-        this.shadow = shadow;
-    }
-
     public int getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public String getCatchPhrase() {
-        return catchPhrase;
-    }
-
-    public void setCatchPhrase(String catchPhrase) {
-        this.catchPhrase = catchPhrase;
     }
 
     public String getMuseumPhrase() {
@@ -95,13 +67,4 @@ public class Fish {
     public void setImage_uri(String image_uri) {
         this.image_uri = image_uri;
     }
-
-    public String getIcon_uri() {
-        return icon_uri;
-    }
-
-    public void setIcon_uri(String icon_uri) {
-        this.icon_uri = icon_uri;
-    }
-
 }

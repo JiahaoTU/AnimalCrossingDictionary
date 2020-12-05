@@ -24,4 +24,29 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FishActivity.class);
         startActivity(intent);
     }
+
+    public void bugsButton(View view){
+        Intent intent = new Intent(this, BugsActivity.class);
+        startActivity(intent);
+    }
+
+    public void seaCreaturesButton(View view){
+        Intent intent = new Intent(this, SeaCreaturesActivity.class);
+        startActivity(intent);
+    }
+
+    public void fossilsButton(View view){
+        Intent intent = new Intent(this, FossilsActivity.class);
+        startActivity(intent);
+    }
+
+    public void villagersButton(View view){
+        Intent intent = new Intent(this, VillagersActivity.class);
+        startActivity(intent);
+    }
+
+    public void songsButton(View view){
+        Intent intent = new Intent(this, SongsActivity.class);
+        startActivity(intent);
+    }
 }
