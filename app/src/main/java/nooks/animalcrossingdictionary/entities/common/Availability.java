@@ -2,7 +2,9 @@ package nooks.animalcrossingdictionary.entities.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Availability {
+import java.io.Serializable;
+
+public class Availability implements Serializable {
 
     @SerializedName("month-northern")
     private String mouthNorthern;

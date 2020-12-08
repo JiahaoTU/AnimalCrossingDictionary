@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="nooks.animalcrossingdictionary.SongsActivity"></activity>
+        <activity android:name="nooks.animalcrossingdictionary.FossilsDetailActivity"></activity>
+        <activity android:name="nooks.animalcrossingdictionary.SongsActivity" />
         <activity android:name="nooks.animalcrossingdictionary.VillagersActivity" />
         <activity android:name="nooks.animalcrossingdictionary.FossilsActivity" />
         <activity android:name="nooks.animalcrossingdictionary.SeaCreaturesActivity" />

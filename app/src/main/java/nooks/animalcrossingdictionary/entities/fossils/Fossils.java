@@ -2,12 +2,12 @@ package nooks.animalcrossingdictionary.entities.fossils;
 
 import com.google.gson.annotations.SerializedName;
 
-import nooks.animalcrossingdictionary.entities.common.Availability;
+import java.io.Serializable;
+
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Fossils {
+public class Fossils implements Serializable {
 
-    private String id;
     @SerializedName("file-name")
     private String fileName;
     private Name name;
@@ -18,14 +18,6 @@ public class Fossils {
 
     public Fossils() {
 
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getFileName() {
