@@ -1,0 +1,181 @@
+Index: app/src/main/java/nooks/animalcrossingdictionary/adapter/Adapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package nooks.animalcrossingdictionary.adapter;\n\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport com.example.animalcrossingdictionary.R;\n\nimport java.util.List;\n\nimport nooks.animalcrossingdictionary.entities.fish.Fish;\n\npublic class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{\n\n    public static class MyViewHolder_fish extends RecyclerView.ViewHolder {\n\n        public TextView name;\n        public TextView shadow;\n\n        public MyViewHolder_fish(View view) {\n            super(view);\n            name = view.findViewById(R.id.name);\n            shadow = view.findViewById(R.id.shadow);\n        }\n    }\n\n\n    private List<Fish> listData;\n    public Adapter(List<Fish> data) {\n        this.listData = data;\n    }\n\n    @NonNull\n    @Override\n    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_fish, parent, false);\n        return new MyViewHolder_fish(v);\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {\n        ((MyViewHolder_fish)holder).name.setText(listData.get(position).getFileName());\n        ((MyViewHolder_fish)holder).shadow.setText(listData.get(position).getShadow());\n    }\n\n    @Override\n    public int getItemCount() {\n        return listData.size();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/nooks/animalcrossingdictionary/adapter/Adapter.java	(revision 8091a3b0aa4dca498c25e5cc0d9208385d1f6aa9)
++++ app/src/main/java/nooks/animalcrossingdictionary/adapter/Adapter.java	(date 1607192173000)
+@@ -3,6 +3,7 @@
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.ImageView;
+ import android.widget.TextView;
+ 
+ import androidx.annotation.NonNull;
+@@ -18,13 +19,20 @@
+ 
+     public static class MyViewHolder_fish extends RecyclerView.ViewHolder {
+ 
+-        public TextView name;
+-        public TextView shadow;
++        public TextView name, loc, size, price, place, month, rarity, time;
++        public ImageView image;
+ 
+         public MyViewHolder_fish(View view) {
+             super(view);
+             name = view.findViewById(R.id.name);
+-            shadow = view.findViewById(R.id.shadow);
++            loc = view.findViewById(R.id.location_info);
++            size = view.findViewById(R.id.size_info);
++            price = view.findViewById(R.id.price_info);
++            place = view.findViewById(R.id.place_info);
++            month = view.findViewById(R.id.month_info);
++            rarity = view.findViewById(R.id.rarity_info);
++            time = view.findViewById(R.id.time_info);
++            image = view.findViewById(R.id.imageView);
+         }
+     }
+ 
+@@ -44,7 +52,13 @@
+     @Override
+     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+         ((MyViewHolder_fish)holder).name.setText(listData.get(position).getFileName());
+-        ((MyViewHolder_fish)holder).shadow.setText(listData.get(position).getShadow());
++        ((MyViewHolder_fish)holder).loc.setText(listData.get(position).getAvailability().getLocation());
++        ((MyViewHolder_fish)holder).size.setText(listData.get(position).getShadow());
++        ((MyViewHolder_fish)holder).price.setText(listData.get(position).getPrice());
++        ((MyViewHolder_fish)holder).place.setText(listData.get(position).getFileName());
++        ((MyViewHolder_fish)holder).month.setText(listData.get(position).getAvailability().getMouthNorthern());
++        ((MyViewHolder_fish)holder).rarity.setText(listData.get(position).getAvailability().getRarity());
++        ((MyViewHolder_fish)holder).time.setText(listData.get(position).getAvailability().getTime());
+     }
+ 
+     @Override
+Index: app/src/main/res/layout/activity_fish.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\"nooks.animalcrossingdictionary.FishActivity\"\n    android:orientation=\"vertical\">\n\n    <Button\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"60dp\"\n        android:onClick=\"search\"\n        android:text=\"testSearch\"/>\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/recycleList\"\n        android:scrollbars=\"vertical\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"/>\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_fish.xml	(revision 8091a3b0aa4dca498c25e5cc0d9208385d1f6aa9)
++++ app/src/main/res/layout/activity_fish.xml	(date 1607191538000)
+@@ -4,19 +4,109 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context="nooks.animalcrossingdictionary.FishActivity"
+-    android:orientation="vertical">
++    android:background="#F8DC10"
++    android:orientation="vertical"
++    tools:context="nooks.animalcrossingdictionary.FishActivity">
++
++    <TextView
++        android:id="@+id/fish_title"
++        android:layout_width="match_parent"
++        android:layout_height="150px"
++        android:background="#A97206"
++        android:gravity="center"
++        android:text="Fish"
++        android:textColor="@android:color/black"
++        android:textSize="40dp" />
++
++    <RadioGroup
++        android:layout_width="match_parent"
++        android:layout_height="30dp"
++        android:orientation="horizontal" >
++
++        <RadioButton
++            android:id="@+id/north_radio"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:checked="true"
++            android:text="Northern Hemisphere" />
++
++        <RadioButton
++            android:id="@+id/south_radio"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:text="Southern Hemisphere" />
++    </RadioGroup>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="40dp"
++        android:orientation="horizontal">
++
++        <EditText
++            android:id="@+id/inputName"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:ems="10"
++            android:hint="Search Name"
++            android:inputType="textPersonName" />
++
++        <Button
++            android:id="@+id/searchName_button"
++            android:layout_width="40dp"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="20dp"
++            android:layout_marginRight="20dp"
++            android:layout_weight="1"
++            android:text="Search"
++            android:textAllCaps="false" />
++    </LinearLayout>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="40dp"
++        android:orientation="horizontal">
++
++        <Spinner
++            android:id="@+id/month_spinner"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="10dp"
++            android:layout_marginRight="10dp"
++            android:layout_weight="1"
++            android:entries="@array/month" />
++
++        <Spinner
++            android:id="@+id/location_spinner"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="10dp"
++            android:layout_marginRight="10dp"
++            android:layout_weight="1"
++            android:entries="@array/loc" />
++
++        <Spinner
++            android:id="@+id/rarity_spinner"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="10dp"
++            android:layout_marginRight="10dp"
++            android:layout_weight="1"
++            android:entries="@array/rarity" />
++    </LinearLayout>
+ 
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="60dp"
+         android:onClick="search"
+-        android:text="testSearch"/>
++        android:text="testSearch" />
+ 
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/recycleList"
+-        android:scrollbars="vertical"
+         android:layout_width="match_parent"
+-        android:layout_height="match_parent"/>
++        android:layout_height="match_parent"
++        android:scrollbars="vertical" />
+ 
+ </LinearLayout>
+\ No newline at end of file

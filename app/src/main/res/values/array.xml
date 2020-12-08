@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="month">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+    </string-array>
+
+    <string-array name="loc">
+        <item>River</item>
+        <item>Sea</item>
+        <item>Pond</item>
+        <item>Pier</item>
+    </string-array>
+
+    <string-array name="rarity">
+        <item>Common</item>
+        <item>Uncommen</item>
+        <item>Rare</item>
+        <item>Ultra-rare</item>
+    </string-array>
+</resources>

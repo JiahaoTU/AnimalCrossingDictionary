@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nooks.animalcrossingdictionary.FishActivity"
+    android:background="#F8DC10"
     android:orientation="vertical"
     android:padding="5dp">
 
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Fish"
+        android:background="#A97206"
         android:textAllCaps="false"
         android:gravity="center"
         android:textSize="40sp"/>
