@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.animalcrossingdictionary.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -19,20 +20,20 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static class MyViewHolder_fish extends RecyclerView.ViewHolder {
 
-        public TextView name;
-        public TextView size, loc, price, month, rarity, time;
-        public ImageView icon;
+        public TextView name, loc, size, price, place, month, rarity, time;
+        public ImageView image;
 
         public MyViewHolder_fish(View view) {
             super(view);
             name = view.findViewById(R.id.name);
-            size = view.findViewById(R.id.size_info);
             loc = view.findViewById(R.id.location_info);
+            size = view.findViewById(R.id.size_info);
             price = view.findViewById(R.id.price_info);
+            place = view.findViewById(R.id.place_info);
             month = view.findViewById(R.id.month_info);
             rarity = view.findViewById(R.id.rarity_info);
             time = view.findViewById(R.id.time_info);
-            icon = view.findViewById(R.id.imageView);
+            image = view.findViewById(R.id.imageView);
         }
     }
 
@@ -52,11 +53,15 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((MyViewHolder_fish)holder).name.setText(listData.get(position).getName().getNameEUen());
-        ((MyViewHolder_fish)holder).size.setText(listData.get(position).getShadow().split(" ")[0]);
+        ((MyViewHolder_fish)holder).name.setText(listData.get(position).getFileName());
         ((MyViewHolder_fish)holder).loc.setText(listData.get(position).getAvailability().getLocation());
-        ((MyViewHolder_fish)holder).price.setText(listData.get(position).getPrice()+"");
+        ((MyViewHolder_fish)holder).size.setText(listData.get(position).getShadow());
+        ((MyViewHolder_fish)holder).price.setText(String.valueOf(listData.get(position).getPrice()));
+        ((MyViewHolder_fish)holder).place.setText(listData.get(position).getFileName());
+        ((MyViewHolder_fish)holder).month.setText(listData.get(position).getAvailability().getMouthNorthern());
         ((MyViewHolder_fish)holder).rarity.setText(listData.get(position).getAvailability().getRarity());
+        ((MyViewHolder_fish)holder).time.setText(listData.get(position).getAvailability().getTime());
+        Picasso.get().load(listData.get(position).getIcon_uri()).into(((MyViewHolder_fish)holder).image);
 
     }
 

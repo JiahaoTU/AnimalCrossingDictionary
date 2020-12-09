@@ -36,15 +36,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="120dp"
+            android:baselineAligned="false">
 
             <Button
-                android:id="@+id/seaCreaturesButton"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:onClick="seaCreaturesButton"
                 android:text="Sea Creatures"
                 android:textAllCaps="false"/>
+
 
             <Button
                 android:id="@+id/fossilsButton"
@@ -53,6 +54,7 @@
                 android:onClick="fossilsButton"
                 android:text="Fossils"
                 android:textAllCaps="false"/>
+
 
         </LinearLayout>
 
