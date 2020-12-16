@@ -216,10 +216,5 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/shadow"
-        android:layout_width="200dp"
-        android:layout_height="match_parent" />
-
 
 </LinearLayout>
