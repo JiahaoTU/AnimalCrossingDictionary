@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    tools:ignore="MissingDefaultResource"
-    android:orientation="horizontal">
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
 
     <LinearLayout
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/icon_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
             android:scaleType="fitCenter"
             tools:srcCompat="@tools:sample/avatars" />
 
@@ -37,79 +37,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="40dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/loc_icon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="Location"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                android:scaleType="fitCenter"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/location_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
                 android:layout_marginBottom="2dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/size"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/size_icon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:text="size"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                android:scaleType="fitCenter"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/size_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:text="price"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/price_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="2"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
@@ -117,103 +92,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/place"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/rarity_icon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:text="Place"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/place_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/month"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:text="month"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/month_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/rarity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:text="rarity"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+                android:scaleType="fitCenter"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/rarity_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="2"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/price_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:layout_weight="1"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/price_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="2"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="2dp"
-                android:text="Time"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/time_info"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
     </LinearLayout>
 
 
