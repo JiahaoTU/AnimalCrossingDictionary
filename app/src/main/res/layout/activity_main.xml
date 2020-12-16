@@ -4,39 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nooks.animalcrossingdictionary.MainActivity"
-    android:padding="5dp">
+    android:layout_gravity="center_horizontal"
+    android:padding="5dp"
+    tools:context="nooks.animalcrossingdictionary.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="731dp"
+        android:background="#F6E6A7"
         android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="237dp"
+            android:layout_height="119dp"
+            android:layout_gravity="center"
+            android:src="@drawable/animalcrossinglogo" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="82dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/fishButton"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
+                android:gravity="center"
                 android:onClick="fishButton"
                 android:text="Fish"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/bugsButton"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
+                android:gravity="center"
                 android:onClick="bugsButton"
                 android:text="Bugs"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="82dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/seaCreaturesButton"
@@ -44,7 +59,7 @@
                 android:layout_height="60dp"
                 android:onClick="seaCreaturesButton"
                 android:text="Sea Creatures"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/fossilsButton"
@@ -52,13 +67,15 @@
                 android:layout_height="60dp"
                 android:onClick="fossilsButton"
                 android:text="Fossils"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/villagersButton"
@@ -66,7 +83,7 @@
                 android:layout_height="60dp"
                 android:onClick="villagersButton"
                 android:text="Villagers"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/songsButton"
@@ -74,10 +91,15 @@
                 android:layout_height="60dp"
                 android:onClick="songsButton"
                 android:text="Songs"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="266dp"
+            android:layout_height="172dp"
+            android:layout_gravity="center"
+            android:src="@drawable/isabelle" />
 
 
     </LinearLayout>
