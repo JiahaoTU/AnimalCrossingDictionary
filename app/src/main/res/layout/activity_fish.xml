@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="nooks.animalcrossingdictionary.FishActivity"
     android:background="#F8DC10"
     android:orientation="vertical"
-    tools:context="nooks.animalcrossingdictionary.FishActivity">
+    android:padding="5dp">
 
     <TextView
-        android:id="@+id/fish_title"
         android:layout_width="match_parent"
-        android:layout_height="150px"
+        android:layout_height="50dp"
         android:text="Fish"
         android:background="#A97206"
         android:textAllCaps="false"
         android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="40dp"/>
+        android:textSize="40sp"/>
 
 
     <RadioGroup
@@ -27,42 +26,38 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/north_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/north"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:checked="true"
-            android:text="Northern Hemisphere"/>
+            android:text="North"
+            android:checked="true"/>
         <RadioButton
-            android:id="@+id/south_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/south"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Southern Hemisphere"/>
+            android:text="South"/>
 
     </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="50dp">
         
         <EditText
             android:id="@+id/inputName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:ems="10"
             android:hint="Search name"
             android:maxLength="20"
-            android:inputType="textPersonName"/>
+            android:maxLines="1"/>
         <Button
-            android:id="@+id/searchName_button"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
             android:text="Search"
             android:textAllCaps="false"/>
 
@@ -70,37 +65,31 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="40dp">
 
         <Spinner
-            android:id="@+id/month_spinner"
+            android:id="@+id/month"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:entries="@array/month" />
-
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <Spinner
-            android:id="@+id/location_spinner"
+            android:id="@+id/location"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:entries="@array/loc" />
-
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <Spinner
-            android:id="@+id/rarity_spinner"
+            android:id="@+id/rarity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:entries="@array/rarity" />
-
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
     </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="search"
+        android:text="testSearch"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleList"
