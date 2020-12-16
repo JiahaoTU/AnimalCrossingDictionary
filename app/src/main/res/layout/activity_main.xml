@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nooks.animalcrossingdictionary.MainActivity"
-    android:padding="5dp">
+    tools:context="nooks.animalcrossingdictionary.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
