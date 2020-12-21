@@ -2,10 +2,12 @@ package nooks.animalcrossingdictionary.entities.bugs;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import nooks.animalcrossingdictionary.entities.common.Availability;
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Bugs {
+public class Bugs implements Serializable {
 
     private String id;
     @SerializedName("file-name")

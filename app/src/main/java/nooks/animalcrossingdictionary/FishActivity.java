@@ -1,6 +1,7 @@
 package nooks.animalcrossingdictionary;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,9 +27,6 @@ public class FishActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     private List<Fish> fishes;
-
-    private List<String> location;
-    private List<String> rarity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +54,16 @@ public class FishActivity extends AppCompatActivity {
 
                 Adapter adapter = new Adapter(fishSearch);
                 recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
+                recyclerView.addItemDecoration(new DividerItemDecoration(FishActivity.this, DividerItemDecoration.VERTICAL));
                 recyclerView.setAdapter(adapter);
 
-                Log.d("Retrofit", "Success: "+ response.body().get(0));
+                /*Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().size());
-                Log.d("Retrofit", "Success: "+ fishes.size());
+                Log.d("Retrofit", "Success: "+ fishes.size());*/
             }
 
             @Override

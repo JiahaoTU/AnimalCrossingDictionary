@@ -2,9 +2,11 @@ package nooks.animalcrossingdictionary.entities.villagers;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Villagers {
+public class Villagers implements Serializable {
 
     private String id;
     @SerializedName("file-name")

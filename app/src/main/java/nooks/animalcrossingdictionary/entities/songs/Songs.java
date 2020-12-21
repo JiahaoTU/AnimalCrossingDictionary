@@ -2,9 +2,11 @@ package nooks.animalcrossingdictionary.entities.songs;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Songs {
+public class Songs implements Serializable {
 
     private String id;
     @SerializedName("file-name")

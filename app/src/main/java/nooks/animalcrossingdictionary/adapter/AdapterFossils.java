@@ -30,7 +30,7 @@ public class AdapterFossils extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public MyViewHolder_fossils(View view) {
             super(view);
             name = view.findViewById(R.id.name);
-            price = view.findViewById(R.id.price);
+            //price = view.findViewById(R.id.price);
             image = view.findViewById(R.id.image);
         }
     }

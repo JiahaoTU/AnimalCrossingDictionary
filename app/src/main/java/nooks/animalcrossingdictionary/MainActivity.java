@@ -8,10 +8,14 @@ import android.view.View;
 
 import com.example.animalcrossingdictionary.R;
 
+import java.util.Calendar;
+
 import nooks.animalcrossingdictionary.retrofit.Reception;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static Calendar calendar = Calendar.getInstance();
+    public static int month = calendar.get(Calendar.MONTH)+1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

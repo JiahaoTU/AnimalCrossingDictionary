@@ -2,10 +2,12 @@ package nooks.animalcrossingdictionary.entities.fish;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import nooks.animalcrossingdictionary.entities.common.Availability;
 import nooks.animalcrossingdictionary.entities.common.Name;
 
-public class Fish {
+public class Fish implements Serializable {
 
     private String id;
     @SerializedName("file-name")

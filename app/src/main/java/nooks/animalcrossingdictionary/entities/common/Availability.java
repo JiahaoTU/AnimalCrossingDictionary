@@ -16,11 +16,11 @@ public class Availability implements Serializable {
     private String location;    //only fish, bugs
     private String rarity;  //only fish, bugs
     @SerializedName("month-array-northern")
-    private String[] monthArrayNorthern;
+    private int[] monthArrayNorthern;
     @SerializedName("month-array-southern")
-    private String[] monthArraySouthern;
+    private int[] monthArraySouthern;
     @SerializedName("time-array")
-    private String[] timeArray;
+    private int[] timeArray;
 
     public Availability(){
 
@@ -82,27 +82,27 @@ public class Availability implements Serializable {
         this.rarity = rarity;
     }
 
-    public String[] getMonthArrayNorthern() {
+    public int[] getMonthArrayNorthern() {
         return monthArrayNorthern;
     }
 
-    public void setMonthArrayNorthern(String[] monthArrayNorthern) {
+    public void setMonthArrayNorthern(int[] monthArrayNorthern) {
         this.monthArrayNorthern = monthArrayNorthern;
     }
 
-    public String[] getMonthArraySouthern() {
+    public int[] getMonthArraySouthern() {
         return monthArraySouthern;
     }
 
-    public void setMonthArraySouthern(String[] monthArraySouthern) {
+    public void setMonthArraySouthern(int[] monthArraySouthern) {
         this.monthArraySouthern = monthArraySouthern;
     }
 
-    public String[] getTimeArray() {
+    public int[] getTimeArray() {
         return timeArray;
     }
 
-    public void setTimeArray(String[] timeArray) {
+    public void setTimeArray(int[] timeArray) {
         this.timeArray = timeArray;
     }
 }
