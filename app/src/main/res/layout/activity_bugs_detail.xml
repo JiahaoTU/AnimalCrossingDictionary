@@ -30,7 +30,7 @@
             android:layout_height="30dp">
 
             <TextView
-                android:layout_width="160dp"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:paddingLeft="50dp"
                 android:text="Name: "
@@ -50,10 +50,17 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <TextView
-                android:layout_width="160dp"
+            <ImageView
+                android:id="@+id/location_icon"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:paddingLeft="50dp"
+                android:layout_marginLeft="37dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/location"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:text="Location: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -71,10 +78,17 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <TextView
-                android:layout_width="160dp"
+            <ImageView
+                android:id="@+id/rarity_icon"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:paddingLeft="50dp"
+                android:layout_marginLeft="37dp"
+                android:layout_marginRight="3dp"
+                tools:srcCompat="@tools:sample/avatars"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:text="Rarity: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -92,10 +106,17 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <TextView
-                android:layout_width="160dp"
+            <ImageView
+                android:id="@+id/price_icon"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:paddingLeft="50dp"
+                android:layout_marginLeft="37dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/price"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:text="Price: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -112,7 +133,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,10 +154,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
 
-                <TextView
-                    android:layout_width="160dp"
+                <ImageView
+                    android:id="@+id/time_icon"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:paddingLeft="70dp"
+                    android:layout_marginLeft="37dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/time"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
                     android:text="Time: "
                     android:textSize="20sp"
                     android:textStyle="bold"/>
@@ -153,11 +182,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
 
-                <TextView
-                    android:layout_width="160dp"
+                <ImageView
+                    android:id="@+id/calendar_icon"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:paddingLeft="70dp"
-                    android:text="Month: "
+                    android:layout_marginLeft="37dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/calendar"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Calendar: "
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
@@ -182,7 +218,7 @@
                 android:layout_marginTop="2dp">
 
                 <TextView
-                    android:layout_width="160dp"
+                    android:layout_width="170dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="70dp"
                     android:textSize="20sp"
@@ -210,7 +246,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="5dp">
 
         <ImageView
