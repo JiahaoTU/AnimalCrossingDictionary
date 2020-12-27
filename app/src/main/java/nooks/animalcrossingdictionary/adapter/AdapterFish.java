@@ -16,7 +16,7 @@ import java.util.List;
 
 import nooks.animalcrossingdictionary.entities.fish.Fish;
 
-public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class AdapterFish extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static class MyViewHolder_fish extends RecyclerView.ViewHolder {
 
@@ -37,7 +37,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
     private List<Fish> listData;
-    public Adapter(List<Fish> data) {
+    public AdapterFish(List<Fish> data) {
         this.listData = data;
     }
 

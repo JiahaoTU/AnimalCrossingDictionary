@@ -257,13 +257,13 @@
         <ImageView
             android:id="@+id/blathers"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="122dp"
             android:layout_marginBottom="10dp"
-            tools:srcCompat="@tools:sample/avatars"/>
+            tools:srcCompat="@tools:sample/avatars" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="122dp">
 
             <TextView
                 android:id="@+id/museumPhrase"
@@ -276,6 +276,7 @@
                 android:padding="5dp"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
+                android:textSize="16sp"
                 android:typeface="serif"
                 android:verticalScrollbarPosition="right" />
         </ScrollView>

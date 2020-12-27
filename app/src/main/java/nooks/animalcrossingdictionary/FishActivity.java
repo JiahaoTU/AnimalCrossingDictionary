@@ -14,7 +14,7 @@ import com.example.animalcrossingdictionary.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import nooks.animalcrossingdictionary.adapter.Adapter;
+import nooks.animalcrossingdictionary.adapter.AdapterFish;
 import nooks.animalcrossingdictionary.entities.fish.Fish;
 import nooks.animalcrossingdictionary.retrofit.GetRequest;
 import retrofit2.Call;
@@ -52,10 +52,10 @@ public class FishActivity extends AppCompatActivity {
 
                 List<Fish> fishSearch = searchResult(fishes);
 
-                Adapter adapter = new Adapter(fishSearch);
+                AdapterFish adapterFish = new AdapterFish(fishSearch);
                 recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
                 recyclerView.addItemDecoration(new DividerItemDecoration(FishActivity.this, DividerItemDecoration.VERTICAL));
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(adapterFish);
 
                 /*Log.d("Retrofit", "Success: "+ response.body().get(0));
                 Log.d("Retrofit", "Success: "+ response.body().get(0));
