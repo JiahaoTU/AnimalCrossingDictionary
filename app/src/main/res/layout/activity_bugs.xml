@@ -199,7 +199,8 @@
             android:layout_weight="1"
             android:hint="Search name"
             android:maxLength="20"
-            android:maxLines="1" />
+            android:lines="1"
+            android:inputType="text"/>
 
         <Button
             android:id="@+id/searchButton"
