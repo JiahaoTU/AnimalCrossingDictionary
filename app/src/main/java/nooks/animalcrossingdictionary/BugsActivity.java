@@ -23,11 +23,9 @@ import android.widget.Switch;
 
 import com.example.animalcrossingdictionary.R;
 
-import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 import nooks.animalcrossingdictionary.adapter.AdapterBugs;
@@ -50,6 +48,7 @@ public class BugsActivity extends AppCompatActivity {
     private String radioSelect = "";
     private String locationSelect = "";
     private String raritySelect = "";
+    private String nameSearch = "";
 
     private int month = MainActivity.month;
 
@@ -97,18 +96,6 @@ public class BugsActivity extends AppCompatActivity {
             }
         });
 
-        /*spinner_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                locationSelect = (String) spinner_location.getSelectedItem();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
-
         getData();
 
     }
@@ -126,6 +113,7 @@ public class BugsActivity extends AppCompatActivity {
 
                 bugsAdapter = bugs;
                 bugsAdapter = resultNorthSouth(bugsAdapter);
+                bugsAdapter = resultName(bugsAdapter);
 
                 locationList = getLocationList(bugsAdapter);
                 spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
@@ -184,6 +172,8 @@ public class BugsActivity extends AppCompatActivity {
                 });
 
                 bugsAdapter = resultRarity(bugsAdapter);
+
+
 
                 AdapterBugs adapterList = new AdapterBugs(bugsAdapter, switchSelect);
                 AdapterBugs adapterGrid = new AdapterBugs(bugsAdapter, switchSelect);
@@ -277,13 +267,12 @@ public class BugsActivity extends AppCompatActivity {
     }
 
     public void search(View view) {
-       clearFocus();
-        String name = searchName.getText().toString();
-        Log.i("search", "name: " + name);
+        nameSearch = searchName.getText().toString();
+        /*Log.i("search", "name: " + nameSearch);
         List<Bugs> adapterBugs = bugsAdapter;
         List<Bugs> result = new ArrayList<>();
         for (Bugs bugs : adapterBugs) {
-            if (bugs.getName().getNameEUen().contains(name)) {
+            if (bugs.getName().getNameEUen().contains(nameSearch)) {
                 result.add(bugs);
                 Log.i("search", "search: " + bugs.getFileName());
             }
@@ -299,7 +288,9 @@ public class BugsActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new GridLayoutManager(BugsActivity.this, 3));
             recyclerView.removeItemDecoration(splitLine);
             recyclerView.setAdapter(adapterGrid);
-        }
+        }*/
+        clearFocus();
+        getData();
     }
 
     private void clearFocus(){
@@ -310,6 +301,20 @@ public class BugsActivity extends AppCompatActivity {
             }
         }
         searchName.clearFocus();
+    }
+
+    private List<Bugs> resultName(List<Bugs> bugsList) {
+        List<Bugs> result = new ArrayList<>();
+
+        if(nameSearch.equals(""))
+            return bugsList;
+        for (Bugs bugs : bugsList) {
+            if (bugs.getName().getNameEUen().contains(nameSearch)) {
+                result.add(bugs);
+            }
+        }
+
+        return result;
     }
 
     public void fishButton(View view){
