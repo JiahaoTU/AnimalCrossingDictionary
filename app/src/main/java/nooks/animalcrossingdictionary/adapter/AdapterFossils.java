@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.animalcrossingdictionary.R;
-import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.List;
@@ -53,7 +52,7 @@ public class AdapterFossils extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((MyViewHolder_fossils)holder).name.setText(listData.get(position).getName().getNameEUen());
         ((MyViewHolder_fossils)holder).price.setText(String.valueOf(listData.get(position).getPrice()));;
-        Picasso.get().load(listData.get(position).getImage_uri()).into(((MyViewHolder_fossils)holder).image);
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

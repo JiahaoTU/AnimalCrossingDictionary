@@ -53,6 +53,9 @@ public class BugsActivity extends AppCompatActivity {
 
     private int month = MainActivity.month;
 
+    private ArrayAdapter<String> spinnerAdapterLocation;
+    private ArrayAdapter<String> spinnerAdapterRarity;
+
     private DividerItemDecoration splitLine;
 
     private List<Bugs> bugs;
@@ -103,17 +106,13 @@ public class BugsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
-
-        spinner_rarity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                raritySelect = (String) spinner_rarity.getSelectedItem();
-                getData();
-            }
         });*/
 
         getData();
+
+
+
+
 
     }
 
@@ -128,22 +127,66 @@ public class BugsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Bugs>> call, Response<List<Bugs>> response) {
                 bugs = response.body();
 
-                List<Bugs> bugsAdapter = new ArrayList<>();
-                bugsAdapter = resultNorthSouth(bugs);
+                List<Bugs> bugsAdapter = bugs;
+                bugsAdapter = resultNorthSouth(bugsAdapter);
 
                 locationList = getLocationList(bugsAdapter);
-                ArrayAdapter<String> spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
+                spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+                if(locationList.indexOf(locationSelect) != -1) {
+                    spinner_location.setSelection(locationList.indexOf(locationSelect), true);
+                } else {
+                    spinner_location.setSelection(0, true);
+                }
+
+                spinner_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String locationSelectNew = (String) parent.getItemAtPosition(position);
+                        if(!locationSelect.equals(locationSelectNew)) {
+                            locationSelect = locationSelectNew;
+                            getData();
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                bugsAdapter = resultLocation(bugsAdapter);
+
                 rarityList = getRarityList(bugsAdapter);
-                ArrayAdapter<String> spinnerAdapterRarity = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, rarityList);
+                spinnerAdapterRarity = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                //bugsAdapter = resultLocation(bugsAdapter);
-                //bugsAdapter = resultRarity(bugsAdapter);
+                if(rarityList.indexOf(raritySelect) != -1) {
+                    spinner_rarity.setSelection(rarityList.indexOf(raritySelect), true);
+                } else {
+                    spinner_rarity.setSelection(0, true);
+                }
 
+                spinner_rarity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String raritySelectNew = (String) parent.getItemAtPosition(position);
+                        if(!raritySelect.equals(raritySelectNew)) {
+                            raritySelect = raritySelectNew;
+                            getData();
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                bugsAdapter = resultRarity(bugsAdapter);
 
                 AdapterBugs adapterList = new AdapterBugs(bugsAdapter, switchSelect);
                 AdapterBugs adapterGrid = new AdapterBugs(bugsAdapter, switchSelect);
@@ -208,7 +251,7 @@ public class BugsActivity extends AppCompatActivity {
         return result;
     }
 
-    /*private List<Bugs> resultLocation(List<Bugs> bugsList) {
+    private List<Bugs> resultLocation(List<Bugs> bugsList) {
         List<Bugs> result = new ArrayList<>();
 
         if(locationSelect.equals("All locations") || locationSelect.equals(""))
@@ -234,7 +277,7 @@ public class BugsActivity extends AppCompatActivity {
         }
 
         return result;
-    }*/
+    }
 
     public void search(View view) {
         clearFocus();
