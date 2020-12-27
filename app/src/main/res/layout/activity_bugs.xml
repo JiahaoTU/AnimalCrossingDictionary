@@ -214,22 +214,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <Spinner
-            android:id="@+id/month"
+            android:id="@+id/location_spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <Spinner
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <Spinner
-            android:id="@+id/rarity"
+            android:id="@+id/rarity_spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />

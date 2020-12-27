@@ -52,18 +52,20 @@ public class AdapterBugs extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
     private List<Bugs> listData;
-    private int viewType; // view type 1 = list view; 2 = grid view
+    private String viewType;
 
-    public AdapterBugs(List<Bugs> data, int type) {
+    public AdapterBugs(List<Bugs> data, String type) {
         this.listData = data;
         this.viewType = type;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (viewType == 1){
+        if (viewType.equals("")) {
             return 1;
-        } else if(viewType == 2) {
+        } else if(viewType.equals("list")){
+            return 1;
+        } else if(viewType.equals("grid")) {
             return 2;
         } else {
             return 0;

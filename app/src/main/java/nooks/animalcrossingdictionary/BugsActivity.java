@@ -12,10 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Switch;
 
 import com.example.animalcrossingdictionary.R;
@@ -24,6 +27,7 @@ import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 import nooks.animalcrossingdictionary.adapter.AdapterBugs;
@@ -38,17 +42,22 @@ public class BugsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Switch viewSwitch;
-    private EditText editText;
-    private RadioGroup radioGroup;
+    private EditText searchName;
+    private RadioGroup nsChooseRadio;
+    private Spinner spinner_location, spinner_rarity;
 
-    private int switchSelect = 1;
+    private String switchSelect = "";
     private String radioSelect = "";
+    private String locationSelect = "";
+    private String raritySelect = "";
 
     private int month = MainActivity.month;
 
     private DividerItemDecoration splitLine;
 
     private List<Bugs> bugs;
+    private List<String> locationList = new ArrayList<>();
+    private List<String> rarityList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +66,10 @@ public class BugsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycleList);
         viewSwitch = findViewById(R.id.viewSwitch);
-        editText = findViewById(R.id.inputName);
-        radioGroup = findViewById(R.id.radioGroup);
+        searchName = findViewById(R.id.inputName);
+        nsChooseRadio = findViewById(R.id.radioGroup);
+        spinner_location = findViewById(R.id.location_spinner);
+        spinner_rarity = findViewById(R.id.rarity_spinner);
 
         splitLine = new DividerItemDecoration(BugsActivity.this, DividerItemDecoration.VERTICAL);
 
@@ -66,14 +77,14 @@ public class BugsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(!isChecked)
-                    switchSelect = 1;
+                    switchSelect = "list";
                 else
-                    switchSelect = 2;
+                    switchSelect = "grid";
                 getData();
             }
         });
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        nsChooseRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = findViewById(checkedId);
@@ -82,10 +93,29 @@ public class BugsActivity extends AppCompatActivity {
             }
         });
 
+        /*spinner_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                locationSelect = (String) spinner_location.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinner_rarity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                raritySelect = (String) spinner_rarity.getSelectedItem();
+                getData();
+            }
+        });*/
+
         getData();
+
     }
-
-
 
     private void getData() {
         retrofit2.Retrofit retrofit = new retrofit2.Retrofit.Builder()
@@ -101,16 +131,31 @@ public class BugsActivity extends AppCompatActivity {
                 List<Bugs> bugsAdapter = new ArrayList<>();
                 bugsAdapter = resultNorthSouth(bugs);
 
+                locationList = getLocationList(bugsAdapter);
+                ArrayAdapter<String> spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
+                spinner_location.setAdapter(spinnerAdapterLocation);
+                spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                rarityList = getRarityList(bugsAdapter);
+                ArrayAdapter<String> spinnerAdapterRarity = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, rarityList);
+                spinner_rarity.setAdapter(spinnerAdapterRarity);
+                spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                //bugsAdapter = resultLocation(bugsAdapter);
+                //bugsAdapter = resultRarity(bugsAdapter);
+
 
                 AdapterBugs adapterList = new AdapterBugs(bugsAdapter, switchSelect);
                 AdapterBugs adapterGrid = new AdapterBugs(bugsAdapter, switchSelect);
-
-
-                if(switchSelect == 1) {
+                if(switchSelect.equals("") || switchSelect.equals("list")) {
                     recyclerView.removeItemDecoration(splitLine);
-                    setListView(adapterList);
-                }else if(switchSelect == 2) {
-                    setGridView(adapterGrid);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(BugsActivity.this));
+                    recyclerView.addItemDecoration(splitLine);
+                    recyclerView.setAdapter(adapterList);
+                }else if(switchSelect.equals("grid")) {
+                    recyclerView.setLayoutManager(new GridLayoutManager(BugsActivity.this, 3));
+                    recyclerView.removeItemDecoration(splitLine);
+                    recyclerView.setAdapter(adapterGrid);
                 }
             }
 
@@ -121,16 +166,24 @@ public class BugsActivity extends AppCompatActivity {
         });
     }
 
-    private void setListView(AdapterBugs adapter) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(BugsActivity.this));
-        recyclerView.addItemDecoration(splitLine);
-        recyclerView.setAdapter(adapter);
+    private List<String> getLocationList(List<Bugs> bugsList){
+        List<String> locations = new ArrayList<>();
+        locations.add("All locations");
+        for(Bugs bugs: bugsList) {
+            if(!locations.contains(bugs.getAvailability().getLocation()))
+                locations.add(bugs.getAvailability().getLocation());
+        }
+        return locations;
     }
 
-    private void setGridView(AdapterBugs adapter) {
-        recyclerView.setLayoutManager(new GridLayoutManager(BugsActivity.this, 3));
-        recyclerView.removeItemDecoration(splitLine);
-        recyclerView.setAdapter(adapter);
+    private List<String> getRarityList(List<Bugs> bugsList) {
+        List<String> rarities = new ArrayList<>();
+        rarities.add("All rarities");
+        for(Bugs bugs: bugsList) {
+            if(!rarities.contains(bugs.getAvailability().getRarity()))
+                rarities.add(bugs.getAvailability().getRarity());
+        }
+        return rarities;
     }
 
     private List<Bugs> resultNorthSouth(List<Bugs> bugsList) {
@@ -155,6 +208,34 @@ public class BugsActivity extends AppCompatActivity {
         return result;
     }
 
+    /*private List<Bugs> resultLocation(List<Bugs> bugsList) {
+        List<Bugs> result = new ArrayList<>();
+
+        if(locationSelect.equals("All locations") || locationSelect.equals(""))
+            return bugsList;
+
+        for(Bugs bugs: bugsList) {
+            if(bugs.getAvailability().getLocation().equals(locationSelect))
+                result.add(bugs);
+        }
+
+        return result;
+    }
+
+    private List<Bugs> resultRarity(List<Bugs> bugsList) {
+        List<Bugs> result = new ArrayList<>();
+
+        if(raritySelect.equals("All rarities") || raritySelect.equals(""))
+            return bugsList;
+
+        for(Bugs bugs: bugsList) {
+            if(bugs.getAvailability().getRarity().equals(raritySelect))
+                result.add(bugs);
+        }
+
+        return result;
+    }*/
+
     public void search(View view) {
         clearFocus();
     }
@@ -166,7 +247,7 @@ public class BugsActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         }
-        editText.clearFocus();
+        searchName.clearFocus();
     }
 
     public void fishButton(View view){
