@@ -119,6 +119,8 @@ public class BugsActivity extends AppCompatActivity {
                 spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                int position_location = spinnerAdapterLocation.getPosition(locationSelect);
+                spinner_location.setSelection(position_location);
 
                 if(locationList.indexOf(locationSelect) != -1) {
                     spinner_location.setSelection(locationList.indexOf(locationSelect), true);
@@ -148,6 +150,8 @@ public class BugsActivity extends AppCompatActivity {
                 spinnerAdapterRarity = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                int position_rarity = spinnerAdapterRarity.getPosition(locationSelect);
+                spinner_location.setSelection(position_rarity);
 
                 if(rarityList.indexOf(raritySelect) != -1) {
                     spinner_rarity.setSelection(rarityList.indexOf(raritySelect), true);
@@ -172,7 +176,6 @@ public class BugsActivity extends AppCompatActivity {
                 });
 
                 bugsAdapter = resultRarity(bugsAdapter);
-
 
 
                 AdapterBugs adapterList = new AdapterBugs(bugsAdapter, switchSelect);
@@ -268,27 +271,6 @@ public class BugsActivity extends AppCompatActivity {
 
     public void search(View view) {
         nameSearch = searchName.getText().toString();
-        /*Log.i("search", "name: " + nameSearch);
-        List<Bugs> adapterBugs = bugsAdapter;
-        List<Bugs> result = new ArrayList<>();
-        for (Bugs bugs : adapterBugs) {
-            if (bugs.getName().getNameEUen().contains(nameSearch)) {
-                result.add(bugs);
-                Log.i("search", "search: " + bugs.getFileName());
-            }
-        }
-        AdapterBugs adapterList = new AdapterBugs(result, switchSelect);
-        AdapterBugs adapterGrid = new AdapterBugs(result, switchSelect);
-        if(switchSelect.equals("") || switchSelect.equals("list")) {
-            recyclerView.removeItemDecoration(splitLine);
-            recyclerView.setLayoutManager(new LinearLayoutManager(BugsActivity.this));
-            recyclerView.addItemDecoration(splitLine);
-            recyclerView.setAdapter(adapterList);
-        }else if(switchSelect.equals("grid")) {
-            recyclerView.setLayoutManager(new GridLayoutManager(BugsActivity.this, 3));
-            recyclerView.removeItemDecoration(splitLine);
-            recyclerView.setAdapter(adapterGrid);
-        }*/
         clearFocus();
         getData();
     }
