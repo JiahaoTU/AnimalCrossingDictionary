@@ -61,6 +61,7 @@ public class BugsActivity extends AppCompatActivity {
     private List<Bugs> bugs;
     private List<String> locationList = new ArrayList<>();
     private List<String> rarityList = new ArrayList<>();
+    List<Bugs> bugsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +111,6 @@ public class BugsActivity extends AppCompatActivity {
 
         getData();
 
-
-
-
-
     }
 
     private void getData() {
@@ -127,7 +124,7 @@ public class BugsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Bugs>> call, Response<List<Bugs>> response) {
                 bugs = response.body();
 
-                List<Bugs> bugsAdapter = bugs;
+                bugsAdapter = bugs;
                 bugsAdapter = resultNorthSouth(bugsAdapter);
 
                 locationList = getLocationList(bugsAdapter);
@@ -280,7 +277,29 @@ public class BugsActivity extends AppCompatActivity {
     }
 
     public void search(View view) {
-        clearFocus();
+       clearFocus();
+        String name = searchName.getText().toString();
+        Log.i("search", "name: " + name);
+        List<Bugs> adapterBugs = bugsAdapter;
+        List<Bugs> result = new ArrayList<>();
+        for (Bugs bugs : adapterBugs) {
+            if (bugs.getName().getNameEUen().contains(name)) {
+                result.add(bugs);
+                Log.i("search", "search: " + bugs.getFileName());
+            }
+        }
+        AdapterBugs adapterList = new AdapterBugs(result, switchSelect);
+        AdapterBugs adapterGrid = new AdapterBugs(result, switchSelect);
+        if(switchSelect.equals("") || switchSelect.equals("list")) {
+            recyclerView.removeItemDecoration(splitLine);
+            recyclerView.setLayoutManager(new LinearLayoutManager(BugsActivity.this));
+            recyclerView.addItemDecoration(splitLine);
+            recyclerView.setAdapter(adapterList);
+        }else if(switchSelect.equals("grid")) {
+            recyclerView.setLayoutManager(new GridLayoutManager(BugsActivity.this, 3));
+            recyclerView.removeItemDecoration(splitLine);
+            recyclerView.setAdapter(adapterGrid);
+        }
     }
 
     private void clearFocus(){
