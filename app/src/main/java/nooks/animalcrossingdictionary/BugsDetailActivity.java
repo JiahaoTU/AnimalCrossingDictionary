@@ -26,8 +26,6 @@ import nooks.animalcrossingdictionary.entities.bugs.Bugs;
 
 public class BugsDetailActivity extends AppCompatActivity {
 
-    private int month = MainActivity.month;
-
     private ImageView image;
 
     private TextView nameEN,location, rarity, price, time;
