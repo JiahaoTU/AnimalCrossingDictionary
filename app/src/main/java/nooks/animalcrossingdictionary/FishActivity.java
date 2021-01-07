@@ -2,19 +2,36 @@ package nooks.animalcrossingdictionary;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.animalcrossingdictionary.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import nooks.animalcrossingdictionary.adapter.AdapterFish;
+import nooks.animalcrossingdictionary.entities.bugs.Bugs;
 import nooks.animalcrossingdictionary.entities.fish.Fish;
 import nooks.animalcrossingdictionary.retrofit.GetRequest;
 import retrofit2.Call;
@@ -25,15 +42,94 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FishActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private Switch viewSwitch;
+    private EditText searchName;
+    private RadioGroup nsChooseRadio;
+    private Spinner spinner_location, spinner_rarity;
+    private Button searchButton, resetButton;
+    private TextView resultNum;
+
+    private String switchSelect = "";
+    private String radioSelect = "";
+    private String locationSelect = "";
+    private String raritySelect = "";
+    private String nameSearch = "";
+
+    private int month = MainActivity.month;
+
+    private ArrayAdapter<String> spinnerAdapterLocation;
+    private ArrayAdapter<String> spinnerAdapterRarity;
+
+    private DividerItemDecoration splitLine;
 
     private List<Fish> fishes;
+    private List<String> locationList = new ArrayList<>();
+    private List<String> rarityList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish);
-
+        Log.i("fish", "onCreate: ");
         recyclerView = findViewById(R.id.recycleList);
+        viewSwitch = findViewById(R.id.viewSwitch);
+        searchName = findViewById(R.id.inputName);
+        nsChooseRadio = findViewById(R.id.radioGroup);
+        spinner_location = findViewById(R.id.location);
+        spinner_rarity = findViewById(R.id.rarity);
+        searchButton = findViewById(R.id.searchButton);
+        resetButton = findViewById(R.id.reset);
+        resultNum = findViewById(R.id.resultNum);
+
+        splitLine = new DividerItemDecoration(FishActivity.this, DividerItemDecoration.VERTICAL);
+
+        viewSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(!isChecked)
+                    switchSelect = "list";
+                else
+                    switchSelect = "grid";
+                getData();
+            }
+        });
+
+        nsChooseRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = findViewById(checkedId);
+                radioSelect = (String) radioButton.getText();
+                getData();
+            }
+        });
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nameSearch = searchName.getText().toString();
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                if(imm.isActive()&&getCurrentFocus()!=null){
+                    if (getCurrentFocus().getWindowToken()!=null) {
+                        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    }
+                }
+                searchName.clearFocus();
+                getData();
+            }
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchSelect = "";
+                radioSelect = "";
+                viewSwitch.setChecked(false);
+                locationSelect = "";
+                raritySelect = "";
+                nameSearch = "";
+                getData();
+            }
+        });
 
         getData();
 
@@ -48,22 +144,86 @@ public class FishActivity extends AppCompatActivity {
         get.getFishes().enqueue(new Callback<List<Fish>>() {
             @Override
             public void onResponse(Call<List<Fish>> call, Response<List<Fish>> response) {
-                fishes = response.body();
+                List<Fish> fishResponse = response.body();
 
-                List<Fish> fishSearch = searchResult(fishes);
+                fishes = fishResponse;
+                fishes = searchNorthSouth(fishes);
+                fishes = searchFishName(fishes);
 
-                AdapterFish adapterFish = new AdapterFish(fishSearch);
-                recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
-                recyclerView.addItemDecoration(new DividerItemDecoration(FishActivity.this, DividerItemDecoration.VERTICAL));
-                recyclerView.setAdapter(adapterFish);
+                locationList = getLocationList(fishes);
+                spinnerAdapterLocation = new ArrayAdapter<>(FishActivity.this, android.R.layout.simple_spinner_item, locationList);
+                spinner_location.setAdapter(spinnerAdapterLocation);
+                spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                /*Log.d("Retrofit", "Success: "+ response.body().get(0));
-                Log.d("Retrofit", "Success: "+ response.body().get(0));
-                Log.d("Retrofit", "Success: "+ response.body().get(0));
-                Log.d("Retrofit", "Success: "+ response.body().get(0));
-                Log.d("Retrofit", "Success: "+ response.body().get(0));
-                Log.d("Retrofit", "Success: "+ response.body().size());
-                Log.d("Retrofit", "Success: "+ fishes.size());*/
+                if(locationList.indexOf(locationSelect) != -1) {
+                    spinner_location.setSelection(locationList.indexOf(locationSelect), true);
+                } else {
+                    int position_location = spinnerAdapterLocation.getPosition(locationSelect);
+                    spinner_location.setSelection(position_location);
+                }
+
+                spinner_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String locationSelectNew = (String) parent.getItemAtPosition(position);
+                        if(!locationSelect.equals(locationSelectNew)) {
+                            locationSelect = locationSelectNew;
+                            getData();
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                fishes = searchLocation(fishes);
+
+                rarityList = getRarityList(fishes);
+                spinnerAdapterRarity = new ArrayAdapter<>(FishActivity.this, android.R.layout.simple_spinner_item, rarityList);
+                spinner_rarity.setAdapter(spinnerAdapterRarity);
+                spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                if(rarityList.indexOf(radioSelect) != -1) {
+                    spinner_rarity.setSelection(rarityList.indexOf(raritySelect), true);
+                } else {
+                    int position_location = spinnerAdapterRarity.getPosition(raritySelect);
+                    spinner_rarity.setSelection(position_location);
+                }
+
+                spinner_rarity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String locationSelectNew = (String) parent.getItemAtPosition(position);
+                        if(!raritySelect.equals(locationSelectNew)) {
+                            raritySelect = locationSelectNew;
+                            getData();
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                fishes = searchRarity(fishes);
+                resultNum.setText(fishes.size() + " results");
+                AdapterFish adapterFishList = new AdapterFish(fishes, switchSelect);
+                AdapterFish adapterFishGrid = new AdapterFish(fishes, switchSelect);
+                if(switchSelect.equals("") || switchSelect.equals("list")) {
+                    recyclerView.removeItemDecoration(splitLine);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
+                    recyclerView.addItemDecoration(splitLine);
+                    recyclerView.setAdapter(adapterFishList);
+                }else if(switchSelect.equals("grid")) {
+                    recyclerView.setLayoutManager(new GridLayoutManager(FishActivity.this, 3));
+                    recyclerView.removeItemDecoration(splitLine);
+                    recyclerView.setAdapter(adapterFishGrid);
+                }
+
+
             }
 
             @Override
@@ -73,28 +233,116 @@ public class FishActivity extends AppCompatActivity {
         });
     }
 
-    private String shadow = null;
+    private List<Fish> searchRarity(List<Fish> fishes) {
+        List<Fish> result = new ArrayList<>();
 
-    public void search(View view) {
-        shadow = "Smallest";
-        getData();
-    }
+        if(raritySelect.equals("All rarities") || raritySelect.equals(""))
+            return fishes;
 
-
-
-    private List<Fish> searchResult(List<Fish> fishSource) {
-        List<Fish> fishResult = new ArrayList<>();
-        if(shadow != null) {
-            for (Fish fish: fishSource) {
-                if(fish.getShadow().contains(shadow)) {
-                    fishResult.add(fish);
-                }
-            }
-        } else {
-            fishResult = fishSource;
+        for(Fish fish : fishes) {
+            if(fish.getAvailability().getRarity().equals(raritySelect))
+                result.add(fish);
         }
 
-        return fishResult;
+        return result;
     }
 
+    private List<Fish> searchLocation(List<Fish> fishes) {
+        List<Fish> result = new ArrayList<>();
+
+        if(locationSelect.equals("All locations") || locationSelect.equals(""))
+            return fishes;
+
+        for(Fish fish : fishes) {
+            if(fish.getAvailability().getLocation().equals(locationSelect))
+                result.add(fish);
+        }
+
+        return result;
+    }
+
+    private List<String> getRarityList(List<Fish> fishes) {
+        List<String> rarities = new ArrayList<>();
+        rarities.add("All rarities");
+        for (Fish fish : fishes) {
+            if (!rarities.contains(fish.getAvailability().getRarity()))
+                rarities.add(fish.getAvailability().getRarity());
+        }
+        return rarities;
+    }
+
+    private List<String> getLocationList(List<Fish> fishes) {
+        List<String> locs = new ArrayList<>();
+        locs.add("All locations");
+        for (Fish fish : fishes) {
+            if (!locs.contains(fish.getAvailability().getLocation()))
+                locs.add(fish.getAvailability().getLocation());
+        }
+        return locs;
+    }
+
+    private List<Fish> searchFishName(List<Fish> fishes) {
+        List<Fish> result = new ArrayList<>();
+
+        if(nameSearch.equals(""))
+            return fishes;
+
+        for (Fish fish : fishes) {
+            if (fish.getName().getNameEUen().contains(nameSearch)) {
+                result.add(fish);
+            }
+        }
+
+        return result;
+    }
+
+    private List<Fish> searchNorthSouth(List<Fish> fishes) {
+        List<Fish> result = new ArrayList<>();
+        if(radioSelect.equals("All") || radioSelect.equals(""))
+            return fishes;
+
+        for (Fish fish : fishes) {
+            List<Integer> monthList = new ArrayList<>();
+            if(radioSelect.equals("Northern")) {
+                monthList = Arrays.stream(fish.getAvailability().getMonthArrayNorthern()).boxed().collect(Collectors.toList());
+            }else if(radioSelect.equals("Southern")) {
+                monthList = Arrays.stream(fish.getAvailability().getMonthArraySouthern()).boxed().collect(Collectors.toList());
+            }
+            if (monthList.contains(month)) {
+                result.add(fish);
+            }
+        }
+
+        return result;
+    }
+
+    public void fishButton(View view) {
+        Intent intent = new Intent(this, FishActivity.class);
+        startActivity(intent);
+    }
+
+    public void bugsButton(View view){
+        Intent intent = new Intent(this, BugsActivity.class);
+        startActivity(intent);
+    }
+
+    public void seaCreaturesButton(View view){
+        Intent intent = new Intent(this, SeaCreaturesActivity.class);
+        startActivity(intent);
+    }
+
+    public void fossilsButton(View view){
+        Intent intent = new Intent(this, FossilsActivity.class);
+        startActivity(intent);
+    }
+
+    public void villagersButton(View view){
+        Intent intent = new Intent(this, VillagersActivity.class);
+        startActivity(intent);
+    }
+
+    public void songsButton(View view){
+        Intent intent = new Intent(this, SongsActivity.class);
+        startActivity(intent);
+    }
 }

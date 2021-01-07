@@ -119,13 +119,12 @@ public class BugsActivity extends AppCompatActivity {
                 spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                int position_location = spinnerAdapterLocation.getPosition(locationSelect);
-                spinner_location.setSelection(position_location);
 
                 if(locationList.indexOf(locationSelect) != -1) {
                     spinner_location.setSelection(locationList.indexOf(locationSelect), true);
                 } else {
-                    spinner_location.setSelection(0, true);
+                    int position_location = spinnerAdapterLocation.getPosition(locationSelect);
+                    spinner_location.setSelection(position_location);
                 }
 
                 spinner_location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

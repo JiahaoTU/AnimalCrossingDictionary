@@ -24,13 +24,12 @@ public class AdapterBugs extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static class MyViewHolder_bugs_list extends RecyclerView.ViewHolder {
 
         public TextView name;
-        public TextView size, loc, price, rarity;
+        public TextView loc, price, rarity;
         public ImageView icon;
 
         public MyViewHolder_bugs_list(View view) {
             super(view);
             name = view.findViewById(R.id.name);
-            size = view.findViewById(R.id.size_info);
             loc = view.findViewById(R.id.location_info);
             price = view.findViewById(R.id.price_info);
             rarity = view.findViewById(R.id.rarity_info);

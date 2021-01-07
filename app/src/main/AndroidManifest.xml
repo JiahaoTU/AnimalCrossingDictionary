@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="nooks.animalcrossingdictionary.SongsDetailActivity"></activity>
+        <activity android:name="nooks.animalcrossingdictionary.VillagerDetailActivity"></activity>
+        <activity android:name="nooks.animalcrossingdictionary.FishDetailActivity" />
+        <activity android:name="nooks.animalcrossingdictionary.SongsDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.BugsDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.FossilsDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.SongsActivity" />

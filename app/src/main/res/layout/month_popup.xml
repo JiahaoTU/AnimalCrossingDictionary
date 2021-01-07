@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="100dp"
-    android:orientation="vertical"
-    android:background="@drawable/popup_window">
+    android:background="@drawable/popup_window"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,157 +15,157 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Jan"
-            android:textSize="20sp"
             android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Jan"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/feb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Feb"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Feb"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/mar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Mar"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Mar"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/apr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Apr"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Apr"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/may"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="May"
-            android:textSize="20sp"
             android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="May"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/jun"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Jun"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Jun"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/jul"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Jul"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Jul"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/aug"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Aug"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Aug"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/sep"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Sep"
-            android:textSize="20sp"
             android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Sep"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/oct"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Oct"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Oct"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/nov"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Nov"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Nov"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/dec"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Dec"
-            android:textSize="20sp"
-            android:gravity="center"
             android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Dec"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
