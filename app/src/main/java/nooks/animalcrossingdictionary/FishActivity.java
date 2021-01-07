@@ -49,10 +49,10 @@ public class FishActivity extends AppCompatActivity {
     private Button searchButton, resetButton;
     private TextView resultNum;
 
-    private String switchSelect = "";
-    private String radioSelect = "";
-    private String locationSelect = "";
-    private String raritySelect = "";
+    private String switchSelect = "list";
+    private String radioSelect = "All";
+    private String locationSelect = "All locations";
+    private String raritySelect = "All rarities";
     private String nameSearch = "";
 
     private int month = MainActivity.month;
@@ -70,7 +70,6 @@ public class FishActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish);
-        Log.i("fish", "onCreate: ");
         recyclerView = findViewById(R.id.recycleList);
         viewSwitch = findViewById(R.id.viewSwitch);
         searchName = findViewById(R.id.inputName);
@@ -121,11 +120,15 @@ public class FishActivity extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchSelect = "";
-                radioSelect = "";
+                switchSelect = "list";
                 viewSwitch.setChecked(false);
-                locationSelect = "";
-                raritySelect = "";
+                radioSelect = "All";
+                RadioButton checkedButton = findViewById(nsChooseRadio.getCheckedRadioButtonId());
+                checkedButton.setChecked(false);
+                RadioButton button_all = findViewById(R.id.all);
+                button_all.setChecked(true);
+                locationSelect = "All locations";
+                raritySelect = "All rarities";
                 nameSearch = "";
                 getData();
             }
@@ -209,18 +212,17 @@ public class FishActivity extends AppCompatActivity {
                 });
 
                 fishes = searchRarity(fishes);
-                resultNum.setText(fishes.size() + " results");
-                AdapterFish adapterFishList = new AdapterFish(fishes, switchSelect);
-                AdapterFish adapterFishGrid = new AdapterFish(fishes, switchSelect);
-                if(switchSelect.equals("") || switchSelect.equals("list")) {
+                AdapterFish adapterFish = new AdapterFish(fishes, switchSelect);
+                resultNum.setText(adapterFish.getItemCount() + " results");
+                if(switchSelect.equals("list")) {
                     recyclerView.removeItemDecoration(splitLine);
                     recyclerView.setLayoutManager(new LinearLayoutManager(FishActivity.this));
                     recyclerView.addItemDecoration(splitLine);
-                    recyclerView.setAdapter(adapterFishList);
+                    recyclerView.setAdapter(adapterFish);
                 }else if(switchSelect.equals("grid")) {
                     recyclerView.setLayoutManager(new GridLayoutManager(FishActivity.this, 3));
                     recyclerView.removeItemDecoration(splitLine);
-                    recyclerView.setAdapter(adapterFishGrid);
+                    recyclerView.setAdapter(adapterFish);
                 }
 
 
@@ -236,7 +238,7 @@ public class FishActivity extends AppCompatActivity {
     private List<Fish> searchRarity(List<Fish> fishes) {
         List<Fish> result = new ArrayList<>();
 
-        if(raritySelect.equals("All rarities") || raritySelect.equals(""))
+        if(raritySelect.equals("All rarities"))
             return fishes;
 
         for(Fish fish : fishes) {
@@ -250,7 +252,7 @@ public class FishActivity extends AppCompatActivity {
     private List<Fish> searchLocation(List<Fish> fishes) {
         List<Fish> result = new ArrayList<>();
 
-        if(locationSelect.equals("All locations") || locationSelect.equals(""))
+        if(locationSelect.equals("All locations"))
             return fishes;
 
         for(Fish fish : fishes) {
@@ -298,7 +300,7 @@ public class FishActivity extends AppCompatActivity {
 
     private List<Fish> searchNorthSouth(List<Fish> fishes) {
         List<Fish> result = new ArrayList<>();
-        if(radioSelect.equals("All") || radioSelect.equals(""))
+        if(radioSelect.equals("All"))
             return fishes;
 
         for (Fish fish : fishes) {

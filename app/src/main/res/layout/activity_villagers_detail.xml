@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    tools:context="nooks.animalcrossingdictionary.VillagerDetailActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:text="Name: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nameEN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="englishName"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:text="Species: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/species_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Species: "
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:text="Gender: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/gender_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Gender: "
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:text="Birthday: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/birth_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Birthday: "
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:text="Personality: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/personality_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Personality: "
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="40dp"
+                android:text="Catch-phrase: "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/catchPhrase_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Catch-phrase: "
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
