@@ -89,4 +89,12 @@ public class BugsDetailActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (popupWindow_month.popupWindow != null) {
+            popupWindow_month.popupWindow.dismiss();
+        }
+    }
+
 }

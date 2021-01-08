@@ -15,7 +15,7 @@ import com.example.animalcrossingdictionary.R;
 
 import java.util.List;
 
-import nooks.animalcrossingdictionary.VillagerDetailActivity;
+import nooks.animalcrossingdictionary.VillagersDetailActivity;
 import nooks.animalcrossingdictionary.entities.villagers.Villagers;
 
 public class AdapterVillager extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -101,7 +101,7 @@ public class AdapterVillager extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), VillagerDetailActivity.class);
+                Intent intent = new Intent(v.getContext(), VillagersDetailActivity.class);
                 Villagers chosenVillager = listData.get(position);
                 intent.putExtra("villager", chosenVillager);
                 v.getContext().startActivity(intent);

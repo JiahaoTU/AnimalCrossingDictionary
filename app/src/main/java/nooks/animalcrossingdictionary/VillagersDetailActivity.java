@@ -12,7 +12,7 @@ import com.example.animalcrossingdictionary.R;
 
 import nooks.animalcrossingdictionary.entities.villagers.Villagers;
 
-public class VillagerDetailActivity extends AppCompatActivity {
+public class VillagersDetailActivity extends AppCompatActivity {
     private ImageView image;
 
     private TextView nameEn, species, gender, birth, personality, catchPhrase;

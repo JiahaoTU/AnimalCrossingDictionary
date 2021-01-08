@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="nooks.animalcrossingdictionary.VillagerDetailActivity"></activity>
+        <activity android:name="nooks.animalcrossingdictionary.VillagersDetailActivity"></activity>
         <activity android:name="nooks.animalcrossingdictionary.FishDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.SongsDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.BugsDetailActivity" />

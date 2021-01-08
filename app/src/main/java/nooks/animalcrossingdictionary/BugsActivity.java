@@ -116,6 +116,7 @@ public class BugsActivity extends AppCompatActivity {
                 bugsAdapter = resultName(bugsAdapter);
 
                 locationList = getLocationList(bugsAdapter);
+                locationSelect = locationList.get(0);
                 spinnerAdapterLocation = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -146,6 +147,7 @@ public class BugsActivity extends AppCompatActivity {
                 bugsAdapter = resultLocation(bugsAdapter);
 
                 rarityList = getRarityList(bugsAdapter);
+                raritySelect = rarityList.get(0);
                 spinnerAdapterRarity = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

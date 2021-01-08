@@ -64,13 +64,6 @@ public class SongsActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(new GridLayoutManager(SongsActivity.this, 3));
                 recyclerView.setAdapter(adapterGrid);
 
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getFileName());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getId());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getName().getNameEUen());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getBuyPrice());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getMusic_uri());
-                Log.d("Retrofit", "Success: "+ response.body().size());
-
             }
 
             @Override
