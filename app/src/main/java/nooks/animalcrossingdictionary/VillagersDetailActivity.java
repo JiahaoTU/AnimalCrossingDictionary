@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.animalcrossingdictionary.R;
-
 import nooks.animalcrossingdictionary.entities.villagers.Villagers;
 
 public class VillagersDetailActivity extends AppCompatActivity {

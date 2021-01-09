@@ -29,12 +29,12 @@ public class AdapterFossils extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static class MyViewHolder_fossils_grid extends RecyclerView.ViewHolder {
 
         public TextView name;
-        public ImageView image;
+        public ImageView icon;
 
         public MyViewHolder_fossils_grid(View view) {
             super(view);
             name = view.findViewById(R.id.name);
-            image = view.findViewById(R.id.image);
+            icon = view.findViewById(R.id.icon_image);
         }
     }
 
@@ -54,7 +54,8 @@ public class AdapterFossils extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((AdapterFossils.MyViewHolder_fossils_grid) holder).name.setText(listData.get(position).getName().getNameEUen());
-        Glide.with(holder.itemView.getContext()).load(listData.get(position).getImage_uri()).into(((AdapterFossils.MyViewHolder_fossils_grid) holder).image);
+
+        Glide.with(holder.itemView.getContext()).load(listData.get(position).getImage_uri()).into(((AdapterFossils.MyViewHolder_fossils_grid) holder).icon);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
