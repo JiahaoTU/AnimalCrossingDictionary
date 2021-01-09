@@ -4,7 +4,6 @@ import java.util.List;
 
 import nooks.animalcrossingdictionary.entities.bugs.Bugs;
 import nooks.animalcrossingdictionary.entities.fish.Fish;
-import nooks.animalcrossingdictionary.entities.fossils.Fossils;
 import nooks.animalcrossingdictionary.entities.seaCreatures.SeaCreatures;
 import nooks.animalcrossingdictionary.entities.songs.Songs;
 import nooks.animalcrossingdictionary.entities.villagers.Villagers;
@@ -37,7 +36,7 @@ public interface GetRequest {
 
     //Fossils
     @GET("fossils/")
-    Call<List<Fossils>> getFossils();
+    Call<List<nooks.animalcrossingdictionary.entities.fossils.Fossils>> getFossils();
 
     //Villagers
     @GET("villagers/")

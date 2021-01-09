@@ -1,12 +1,12 @@
 package nooks.animalcrossingdictionary;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nooks.animalcrossingdictionary.adapter.AdapterFossils;
-import nooks.animalcrossingdictionary.entities.fish.Fish;
 import nooks.animalcrossingdictionary.entities.fossils.Fossils;
 import nooks.animalcrossingdictionary.retrofit.GetRequest;
 import retrofit2.Call;
@@ -29,9 +28,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FossilsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private EditText editText;
+    private EditText searchName;
+
+    private String nameSearch = "";
 
     private List<Fossils> fossils;
+    List<Fossils> fossilsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +41,7 @@ public class FossilsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fossils);
 
         recyclerView = findViewById(R.id.recycleList);
-
-        editText = findViewById(R.id.inputName);
+        searchName = findViewById(R.id.inputName);
 
         getData();
     }
@@ -56,18 +57,13 @@ public class FossilsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Fossils>> call, Response<List<Fossils>> response) {
                 fossils = response.body();
 
-                List<Fossils> fossilsSearch = searchResult(fossils);
+                fossilsAdapter = fossils;
+                fossilsAdapter = resultName(fossilsAdapter);
 
-                AdapterFossils adapterFossils = new AdapterFossils(fossilsSearch);
-                recyclerView.setLayoutManager(new LinearLayoutManager(FossilsActivity.this));
-                recyclerView.setAdapter(adapterFossils);
+                AdapterFossils adapterGrid = new AdapterFossils(fossilsAdapter);
+                recyclerView.setLayoutManager(new GridLayoutManager(FossilsActivity.this, 3));
+                recyclerView.setAdapter(adapterGrid);
 
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getName().getNameEUen());
-                Log.d("Retrofit", "Success: "+ response.body().get(0));
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getPrice());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getMuseumPhrase());
-                Log.d("Retrofit", "Success: "+ response.body().get(0).getImage_uri());
-                Log.d("Retrofit", "Success: "+ response.body().size());
             }
 
             @Override
@@ -78,25 +74,9 @@ public class FossilsActivity extends AppCompatActivity {
     }
 
     public void search(View view) {
-        getData();
+        nameSearch = searchName.getText().toString();
         clearFocus();
-    }
-
-
-
-    private List<Fossils> searchResult(List<Fossils> fossilsSource) {
-        List<Fossils> fossilsResult = new ArrayList<>();
-        if(!TextUtils.isEmpty(editText.getText())) {
-            for (Fossils fossils: fossilsSource) {
-                if(fossils.getName().getNameEUen().contains(editText.getText().toString())) {
-                    fossilsResult.add(fossils);
-                }
-            }
-        } else {
-            fossilsResult = fossilsSource;
-        }
-
-        return fossilsResult;
+        getData();
     }
 
     private void clearFocus(){
@@ -106,7 +86,51 @@ public class FossilsActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         }
-        editText.clearFocus();
+        searchName.clearFocus();
+    }
+
+    private List<Fossils> resultName(List<Fossils> fossilsList) {
+        List<Fossils> result = new ArrayList<>();
+
+        if(nameSearch.equals(""))
+            return fossilsList;
+        for (Fossils fossils : fossilsList) {
+            if ((fossils.getName().getNameEUen().toLowerCase()).contains(nameSearch)) {
+                result.add(fossils);
+            }
+        }
+
+        return result;
+    }
+
+    public void fishButton(View view){
+        Intent intent = new Intent(this, FishActivity.class);
+        startActivity(intent);
+    }
+
+    public void bugsButton(View view){
+        Intent intent = new Intent(this, BugsActivity.class);
+        startActivity(intent);
+    }
+
+    public void seaCreaturesButton(View view){
+        Intent intent = new Intent(this, SeaCreaturesActivity.class);
+        startActivity(intent);
+    }
+
+    public void fossilsButton(View view){
+        Intent intent = new Intent(this, FossilsActivity.class);
+        startActivity(intent);
+    }
+
+    public void villagersButton(View view){
+        Intent intent = new Intent(this, VillagersActivity.class);
+        startActivity(intent);
+    }
+
+    public void songsButton(View view){
+        Intent intent = new Intent(this, SongsActivity.class);
+        startActivity(intent);
     }
 
 }
