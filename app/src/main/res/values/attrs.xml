@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustButton">
+        <attr name="switchOn" format="reference"/>
+        <attr name="switchOff" format="reference"/>
+    </declare-styleable>
+</resources>

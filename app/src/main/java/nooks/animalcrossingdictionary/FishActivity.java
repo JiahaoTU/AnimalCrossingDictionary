@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.animalcrossingdictionary.R;
@@ -31,7 +30,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import nooks.animalcrossingdictionary.adapter.AdapterFish;
-import nooks.animalcrossingdictionary.entities.bugs.Bugs;
+import nooks.animalcrossingdictionary.adapter.SwitchButton;
 import nooks.animalcrossingdictionary.entities.fish.Fish;
 import nooks.animalcrossingdictionary.retrofit.GetRequest;
 import retrofit2.Call;
@@ -42,7 +41,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FishActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Switch viewSwitch;
+    //private Switch viewSwitch;
+    private SwitchButton viewSwitch;
     private EditText searchName;
     private RadioGroup nsChooseRadio;
     private Spinner spinner_location, spinner_rarity;
