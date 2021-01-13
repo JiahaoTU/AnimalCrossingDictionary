@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -35,12 +34,11 @@ public class SongsDetailActivity extends AppCompatActivity {
 
     private SeekBar seekBar;
     private boolean isSeekBarChanging;
-    private int currentPosition;
     private Timer timer;
     private TimerTask timerTask;
 
     private TextView musicCurrent, musicLength;
-    private Button btnPlay;
+    private ImageButton btnPlay;
 
     private SimpleDateFormat format = new SimpleDateFormat("mm:ss");
 
@@ -122,7 +120,7 @@ public class SongsDetailActivity extends AppCompatActivity {
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                btnPlay.setText("Play");
+                btnPlay.setImageResource(R.drawable.play_music);
                 mediaPlayer.seekTo(0);
             }
         });
@@ -136,7 +134,7 @@ public class SongsDetailActivity extends AppCompatActivity {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
                     seekBar.setMax(mediaPlayer.getDuration());
-                    btnPlay.setText("Play");
+                    btnPlay.setImageResource(R.drawable.play_music);
                     musicCurrent.setText("00:00");
                     musicLength.setText(format.format(mediaPlayer.getDuration())+"");
                     btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -144,10 +142,10 @@ public class SongsDetailActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             if (mediaPlayer.isPlaying()) {
                                 mediaPlayer.pause();
-                                btnPlay.setText("Resume");
+                                btnPlay.setImageResource(R.drawable.play_music);
                             } else {
                                 mediaPlayer.start();
-                                btnPlay.setText("Pause");
+                                btnPlay.setImageResource(R.drawable.pause_music);
 
                             }
                         }

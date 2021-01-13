@@ -154,7 +154,6 @@ public class FishActivity extends AppCompatActivity {
                 fishes = searchFishName(fishes);
 
                 locationList = getLocationList(fishes);
-                locationSelect = locationList.get(0);
                 spinnerAdapterLocation = new ArrayAdapter<>(FishActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -185,7 +184,6 @@ public class FishActivity extends AppCompatActivity {
                 fishes = searchLocation(fishes);
 
                 rarityList = getRarityList(fishes);
-                raritySelect = rarityList.get(0);
                 spinnerAdapterRarity = new ArrayAdapter<>(FishActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
