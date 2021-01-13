@@ -123,10 +123,8 @@ public class FishActivity extends AppCompatActivity {
                 switchSelect = "list";
                 viewSwitch.setChecked(false);
                 radioSelect = "All";
-                RadioButton checkedButton = findViewById(nsChooseRadio.getCheckedRadioButtonId());
-                checkedButton.setChecked(false);
-                RadioButton button_all = findViewById(R.id.all);
-                button_all.setChecked(true);
+                RadioButton button_all = (RadioButton) nsChooseRadio.findViewById(R.id.all);
+                nsChooseRadio.check(button_all.getId());
                 locationSelect = "All locations";
                 raritySelect = "All rarities";
                 nameSearch = "";
@@ -154,7 +152,6 @@ public class FishActivity extends AppCompatActivity {
                 fishes = searchFishName(fishes);
 
                 locationList = getLocationList(fishes);
-                locationSelect = locationList.get(0);
                 spinnerAdapterLocation = new ArrayAdapter<>(FishActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -185,7 +182,6 @@ public class FishActivity extends AppCompatActivity {
                 fishes = searchLocation(fishes);
 
                 rarityList = getRarityList(fishes);
-                raritySelect = rarityList.get(0);
                 spinnerAdapterRarity = new ArrayAdapter<>(FishActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
