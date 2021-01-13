@@ -123,10 +123,8 @@ public class FishActivity extends AppCompatActivity {
                 switchSelect = "list";
                 viewSwitch.setChecked(false);
                 radioSelect = "All";
-                RadioButton checkedButton = findViewById(nsChooseRadio.getCheckedRadioButtonId());
-                checkedButton.setChecked(false);
-                RadioButton button_all = findViewById(R.id.all);
-                button_all.setChecked(true);
+                RadioButton button_all = (RadioButton) nsChooseRadio.findViewById(R.id.all);
+                nsChooseRadio.check(button_all.getId());
                 locationSelect = "All locations";
                 raritySelect = "All rarities";
                 nameSearch = "";
