@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -35,30 +37,30 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VillagersActivity extends AppCompatActivity {
-    int[] count = {0, 0, 0, 0, 0};
 
     private RecyclerView recyclerView;
     private Switch viewSwitch;
+    //private SwitchButton viewSwitch;
     private EditText searchName;
-    private Spinner spinner_species, spinner_gender;
+    private RadioGroup nsChooseRadio;
+    private Spinner spinner_species, spinner_month;
     private Button searchButton, resetButton;
     private TextView resultNum;
 
     private String switchSelect = "list";
+    private String radioSelect = "All";
     private String speciesSelect = "All species";
-    private String genderSelect = "All genders";
+    private String monthSelect = "All months";
     private String nameSearch = "";
 
-    private int month = MainActivity.month;
-
     private ArrayAdapter<String> spinnerAdapterSpecies;
-    private ArrayAdapter<String> spinnerAdapterGender;
+    //private ArrayAdapter<String> spinnerAdapterMonth;
 
     private DividerItemDecoration splitLine;
 
     private List<Villagers> villagers;
     private List<String> speciesList = new ArrayList<>();
-    private List<String> genderList = new ArrayList<>();
+    private List<String> monthList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +70,9 @@ public class VillagersActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleList);
         viewSwitch = findViewById(R.id.viewSwitch);
         searchName = findViewById(R.id.inputName);
+        nsChooseRadio = findViewById(R.id.radioGroup);
         spinner_species = findViewById(R.id.speices);
-        spinner_gender = findViewById(R.id.gender);
+        //spinner_month = findViewById(R.id.month);
         searchButton = findViewById(R.id.searchButton);
         resetButton = findViewById(R.id.reset);
         resultNum = findViewById(R.id.resultNum);
@@ -83,6 +86,15 @@ public class VillagersActivity extends AppCompatActivity {
                     switchSelect = "list";
                 else
                     switchSelect = "grid";
+                getData();
+            }
+        });
+
+        nsChooseRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = findViewById(checkedId);
+                radioSelect = (String) radioButton.getText();
                 getData();
             }
         });
@@ -107,8 +119,11 @@ public class VillagersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switchSelect = "list";
                 viewSwitch.setChecked(false);
+                radioSelect = "All";
+                RadioButton button_all = (RadioButton) nsChooseRadio.findViewById(R.id.all);
+                nsChooseRadio.check(button_all.getId());
                 speciesSelect = "All species";
-                genderSelect = "All genders";
+                //monthSelect = "All months";
                 nameSearch = "";
                 getData();
             }
@@ -128,9 +143,10 @@ public class VillagersActivity extends AppCompatActivity {
             public void onResponse(Call<List<Villagers>> call, Response<List<Villagers>> response) {
                 List<Villagers> villagersResponse = response.body();
                 villagers = villagersResponse;
+                villagers = searchGender(villagers);
                 villagers = searchVillagerName(villagers);
 
-                speciesList = getSpeciesList(speciesList);
+                speciesList = getSpeciesList(villagers);
                 spinnerAdapterSpecies = new ArrayAdapter<>(VillagersActivity.this, android.R.layout.simple_spinner_item, speciesList);
                 spinner_species.setAdapter(spinnerAdapterSpecies);
                 spinnerAdapterSpecies.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -160,24 +176,24 @@ public class VillagersActivity extends AppCompatActivity {
 
                 villagers = searchSpecies(villagers);
 
-                genderList = getGenderList(genderList);
-                spinnerAdapterGender = new ArrayAdapter<>(VillagersActivity.this, android.R.layout.simple_spinner_item, genderList);
-                spinner_gender.setAdapter(spinnerAdapterGender);
-                spinnerAdapterGender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                /*monthList = getMonthList(villagers);
+                spinnerAdapterMonth = new ArrayAdapter<>(VillagersActivity.this, android.R.layout.simple_spinner_item, monthList);
+                spinner_month.setAdapter(spinnerAdapterMonth);
+                spinnerAdapterMonth.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                if (genderList.indexOf(genderSelect) != -1) {
-                    spinner_gender.setSelection(genderList.indexOf(genderSelect), true);
+                if (monthList.indexOf(monthSelect) != -1) {
+                    spinner_month.setSelection(monthList.indexOf(monthSelect), true);
                 } else {
-                    int position_location = spinnerAdapterGender.getPosition(genderSelect);
-                    spinner_gender.setSelection(position_location);
+                    int position_location = spinnerAdapterMonth.getPosition(monthSelect);
+                    spinner_month.setSelection(position_location);
                 }
 
-                spinner_gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                spinner_month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        String genderSelectNew = (String) parent.getItemAtPosition(position);
-                        if (!genderSelect.equals(genderSelectNew)) {
-                            genderSelect = genderSelectNew;
+                        String monthSelectNew = (String) parent.getItemAtPosition(position);
+                        if (!monthSelect.equals(monthSelectNew)) {
+                            monthSelect = monthSelectNew;
                             getData();
                         }
                     }
@@ -188,7 +204,7 @@ public class VillagersActivity extends AppCompatActivity {
                     }
                 });
 
-                villagers = searchGender(villagers);
+                villagers = searchMonth(villagers);*/
                 AdapterVillager adapterVillager = new AdapterVillager(villagers, switchSelect);
                 resultNum.setText(adapterVillager.getItemCount() + " results");
                 if (switchSelect.equals("list")) {
@@ -213,24 +229,38 @@ public class VillagersActivity extends AppCompatActivity {
     private List<Villagers> searchGender(List<Villagers> villagers) {
         List<Villagers> result = new ArrayList<>();
 
-        if (genderSelect.equals("All genders"))
+        if(radioSelect.equals("All"))
+            return villagers;
+
+        for(Villagers villager : villagers) {
+            if(villager.getGender().equals(radioSelect))
+                result.add(villager);
+        }
+
+        return result;
+    }
+
+/*    private List<Villagers> searchMonth(List<Villagers> villagers) {
+        List<Villagers> result = new ArrayList<>();
+
+        if (monthSelect.equals("All months"))
             return villagers;
 
         for (Villagers villager : villagers)
-            if (villager.getGender().equals(genderSelect))
+            if (monthSelect.equals(villager.getBirthdayString().split(" ")[0]))
                 result.add(villager);
 
         return result;
     }
 
-    private List<String> getGenderList(List<String> genderList) {
-        List<String> genders = new ArrayList<>();
-        genders.add("All genders");
+    private List<String> getMonthList(List<Villagers> villagers) {
+        List<String> months = new ArrayList<>();
+        months.add("All months");
         for (Villagers villager : villagers)
-            if (!genders.contains(villager.getGender()))
-                genders.add(villager.getGender());
-        return genders;
-    }
+            if (!months.contains(villager.getBirthdayString().split(" ")[0]))
+                months.add(villager.getBirthdayString().split(" ")[0]);
+        return months;
+    }*/
 
     private List<Villagers> searchSpecies(List<Villagers> villagers) {
         List<Villagers> result = new ArrayList<>();
@@ -246,7 +276,7 @@ public class VillagersActivity extends AppCompatActivity {
 
     }
 
-    private List<String> getSpeciesList(List<String> speciesList) {
+    private List<String> getSpeciesList(List<Villagers> villagers) {
         List<String> specs = new ArrayList<>();
         specs.add("All species");
         for (Villagers villager : villagers)
@@ -287,11 +317,6 @@ public class VillagersActivity extends AppCompatActivity {
 
     public void fossilsButton(View view) {
         Intent intent = new Intent(this, FossilsActivity.class);
-        startActivity(intent);
-    }
-
-    public void villagersButton(View view) {
-        Intent intent = new Intent(this, VillagersActivity.class);
         startActivity(intent);
     }
 
