@@ -55,17 +55,10 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <ImageView
-                android:id="@+id/location_icon"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="37dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/location"/>
-
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
+                android:paddingLeft="50dp"
                 android:text="Location: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -83,17 +76,10 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <ImageView
-                android:id="@+id/rarity_icon"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="37dp"
-                android:layout_marginRight="3dp"
-                tools:srcCompat="@tools:sample/avatars"/>
-
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
+                android:paddingLeft="50dp"
                 android:text="Rarity: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -111,17 +97,10 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <ImageView
-                android:id="@+id/price_icon"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="37dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/price"/>
-
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
+                android:paddingLeft="50dp"
                 android:text="Price: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -159,17 +138,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
 
-                <ImageView
-                    android:id="@+id/time_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="37dp"
-                    android:layout_marginRight="3dp"
-                    android:background="@drawable/time"/>
-
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="170dp"
                     android:layout_height="match_parent"
+                    android:paddingLeft="50dp"
                     android:text="Time: "
                     android:textSize="20sp"
                     android:textStyle="bold"/>
@@ -187,17 +159,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
 
-                <ImageView
-                    android:id="@+id/calendar_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="37dp"
-                    android:layout_marginRight="3dp"
-                    android:background="@drawable/calendar"/>
-
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="170dp"
                     android:layout_height="match_parent"
+                    android:paddingLeft="50dp"
                     android:text="Calendar: "
                     android:textSize="20sp"
                     android:textStyle="bold"/>

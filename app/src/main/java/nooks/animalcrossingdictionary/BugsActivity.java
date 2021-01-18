@@ -20,6 +20,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.animalcrossingdictionary.R;
 
@@ -43,6 +44,7 @@ public class BugsActivity extends AppCompatActivity {
     private EditText searchName;
     private RadioGroup nsChooseRadio;
     private Spinner spinner_location, spinner_rarity;
+    private TextView resultNum;
 
     private String switchSelect = "";
     private String radioSelect = "";
@@ -73,6 +75,7 @@ public class BugsActivity extends AppCompatActivity {
         nsChooseRadio = findViewById(R.id.radioGroup);
         spinner_location = findViewById(R.id.location_spinner);
         spinner_rarity = findViewById(R.id.rarity_spinner);
+        resultNum = findViewById(R.id.resultNum);
 
         splitLine = new DividerItemDecoration(BugsActivity.this, DividerItemDecoration.VERTICAL);
 
@@ -184,15 +187,18 @@ public class BugsActivity extends AppCompatActivity {
 
                 AdapterBugs adapterList = new AdapterBugs(bugsAdapter, switchSelect);
                 AdapterBugs adapterGrid = new AdapterBugs(bugsAdapter, switchSelect);
+
                 if(switchSelect.equals("") || switchSelect.equals("list")) {
                     recyclerView.removeItemDecoration(splitLine);
                     recyclerView.setLayoutManager(new LinearLayoutManager(BugsActivity.this));
                     recyclerView.addItemDecoration(splitLine);
                     recyclerView.setAdapter(adapterList);
+                    resultNum.setText(adapterList.getItemCount() + " results");
                 }else if(switchSelect.equals("grid")) {
                     recyclerView.setLayoutManager(new GridLayoutManager(BugsActivity.this, 3));
                     recyclerView.removeItemDecoration(splitLine);
                     recyclerView.setAdapter(adapterGrid);
+                    resultNum.setText(adapterGrid.getItemCount() + " results");
                 }
             }
 
@@ -274,7 +280,7 @@ public class BugsActivity extends AppCompatActivity {
     }
 
     public void search(View view) {
-        nameSearch = searchName.getText().toString();
+        nameSearch = searchName.getText().toString().toLowerCase();
         clearFocus();
         getData();
     }
@@ -295,12 +301,24 @@ public class BugsActivity extends AppCompatActivity {
         if(nameSearch.equals(""))
             return bugsList;
         for (Bugs bugs : bugsList) {
-            if (bugs.getName().getNameEUen().contains(nameSearch)) {
+            if ((bugs.getName().getNameEUen().toLowerCase()).contains(nameSearch)) {
                 result.add(bugs);
             }
         }
 
         return result;
+    }
+
+    public void reset(View view) {
+        switchSelect = "list";
+        viewSwitch.setChecked(false);
+        radioSelect = "All";
+        RadioButton button_all = (RadioButton) nsChooseRadio.findViewById(R.id.all);
+        nsChooseRadio.check(button_all.getId());
+        locationSelect = "All locations";
+        raritySelect = "All rarities";
+        nameSearch = "";
+        getData();
     }
 
     public void fishButton(View view){
