@@ -1,9 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nooks.animalcrossingdictionary.SeaCreaturesActivity">
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context="nooks.animalcrossingdictionary.BugsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/navigation"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/fishButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:onClick="fishButton"
+                    android:text="Fish"
+                    android:textAllCaps="false"
+                    android:background="@drawable/navi_btn"
+                    android:gravity="left|center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/bugsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:onClick="bugsButton"
+                    android:text="Bugs"
+                    android:textAllCaps="false"
+                    android:background="@drawable/navi_btn_active"
+                    android:gravity="left|center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/seaCreaturesButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:onClick="seaCreaturesButton"
+                    android:text="Sea Creatures"
+                    android:textAllCaps="false"
+                    android:background="@drawable/navi_btn"
+                    android:gravity="left|center_vertical"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/fossilsButton"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:onClick="fossilsButton"
+                    android:text="Fossils"
+                    android:textAllCaps="false"
+                    android:background="@drawable/navi_btn"
+                    android:gravity="left|center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/villagersButton"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:onClick="villagersButton"
+                    android:text="Villagers"
+                    android:textAllCaps="false"
+                    android:background="@drawable/navi_btn"
+                    android:gravity="left|center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/songsButton"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:onClick="songsButton"
+                    android:text="Songs"
+                    android:textAllCaps="false"
+                    android:background="@drawable/navi_btn"
+                    android:gravity="left|center_vertical"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp">
+
+        <Switch
+            android:id="@+id/viewSwitch"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:thumb="@drawable/switch_select_image"
+            android:track="@drawable/switch_background"
+            android:textOn="Grid View"
+            android:textOff="List View"
+            android:textAllCaps="false"
+            android:showText="true"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp">
+
+            <RadioButton
+                android:id="@+id/all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="All" />
+
+            <RadioButton
+                android:id="@+id/north"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Northern" />
+
+            <RadioButton
+                android:id="@+id/south"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Southern" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Search name"
+            android:maxLength="20"
+            android:lines="1"
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Search"
+            android:textAllCaps="false"
+            android:onClick="search"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <Spinner
+            android:id="@+id/location_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/rarity_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:paddingLeft="3dp"
+        android:paddingBottom="5dp"/>
+
+</LinearLayout>
