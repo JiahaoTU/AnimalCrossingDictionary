@@ -157,13 +157,12 @@ public class BugsActivity extends AppCompatActivity {
                 spinnerAdapterRarity = new ArrayAdapter<>(BugsActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                int position_rarity = spinnerAdapterRarity.getPosition(locationSelect);
-                spinner_location.setSelection(position_rarity);
 
                 if(rarityList.indexOf(raritySelect) != -1) {
                     spinner_rarity.setSelection(rarityList.indexOf(raritySelect), true);
                 } else {
-                    spinner_rarity.setSelection(0, true);
+                    int position_rarity = spinnerAdapterRarity.getPosition(raritySelect);
+                    spinner_rarity.setSelection(position_rarity);
                 }
 
                 spinner_rarity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
