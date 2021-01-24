@@ -55,10 +55,9 @@
 
                 <ImageView
                     android:id="@+id/loc_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/location"
                     android:scaleType="fitCenter" />
 
@@ -69,6 +68,9 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center|left"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -80,13 +82,11 @@
 
                 <ImageView
                     android:id="@+id/size_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
                     android:scaleType="fitCenter"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:background="@drawable/size" />
 
                 <TextView
                     android:id="@+id/size_info"
@@ -95,6 +95,9 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center|left"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
@@ -115,12 +118,11 @@
 
                 <ImageView
                     android:id="@+id/rarity_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
                     android:scaleType="fitCenter"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:background="@drawable/rarity" />
 
                 <TextView
                     android:id="@+id/rarity_info"
@@ -129,6 +131,9 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center|left"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -140,11 +145,9 @@
 
                 <ImageView
                     android:id="@+id/price_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/price"
                     android:scaleType="fitCenter" />
 
@@ -154,7 +157,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="3dp"
-                    android:layout_marginBottom="3dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="8dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="center|left"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
