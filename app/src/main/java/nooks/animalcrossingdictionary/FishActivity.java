@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.animalcrossingdictionary.R;
@@ -41,8 +42,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FishActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    //private Switch viewSwitch;
-    private SwitchButton viewSwitch;
+    private Switch viewSwitch;
+    //private SwitchButton viewSwitch;
     private EditText searchName;
     private RadioGroup nsChooseRadio;
     private Spinner spinner_location, spinner_rarity;
@@ -314,11 +315,6 @@ public class FishActivity extends AppCompatActivity {
         }
 
         return result;
-    }
-
-    public void fishButton(View view) {
-        Intent intent = new Intent(this, FishActivity.class);
-        startActivity(intent);
     }
 
     public void bugsButton(View view){

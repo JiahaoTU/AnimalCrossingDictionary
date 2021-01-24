@@ -36,8 +36,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:background="@drawable/navi_btn"
+                    android:clickable="false"
                     android:gravity="left|center_vertical"
-                    android:onClick="fishButton"
                     android:text="Fish"
                     android:textAllCaps="false" />
 
@@ -144,12 +144,14 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="10dp">
 
-        <nooks.animalcrossingdictionary.adapter.SwitchButton
+        <Switch
             android:id="@+id/viewSwitch"
-            android:layout_width="40dp"
+            android:layout_width="90dp"
             android:layout_height="30dp"
-            app:switchOn="@drawable/switch_select_grid_image"
-            app:switchOff="@drawable/switch_select_list_image"/>
+            android:thumb="@drawable/switch_select"
+            android:track="@drawable/switch_background"
+            android:textAllCaps="false"
+            android:layout_gravity="center" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -164,21 +166,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:checked="true"
-                android:layout_marginRight="15dp"
                 android:text="All" />
 
             <RadioButton
                 android:id="@+id/north"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:text="Northern" />
 
             <RadioButton
                 android:id="@+id/south"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:text="Southern" />
 
         </RadioGroup>

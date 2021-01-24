@@ -99,17 +99,10 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <ImageView
-                android:id="@+id/price_icon"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="37dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/price"/>
-
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
+                android:paddingLeft="50dp"
                 android:text="Price: "
                 android:textSize="20sp"
                 android:textStyle="bold"/>

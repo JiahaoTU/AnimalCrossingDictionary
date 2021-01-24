@@ -76,7 +76,7 @@ public class SongsActivity extends AppCompatActivity {
     }
 
     public void search(View view) {
-        nameSearch = searchName.getText().toString();
+        nameSearch = searchName.getText().toString().toLowerCase();
         clearFocus();
         getData();
     }
