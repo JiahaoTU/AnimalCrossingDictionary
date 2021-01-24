@@ -64,8 +64,8 @@ public class SeaCreatureDetailActivity extends AppCompatActivity {
         Glide.with(this).load(seaCreatures.getImage_uri()).centerCrop().into(image);
 
         nameEN.setText(seaCreatures.getName().getNameEUen());
-        location.setText(seaCreatures.getAvailability().getLocation());
-        rarity.setText(seaCreatures.getAvailability().getRarity());
+        location.setText(seaCreatures.getSpeed());
+        rarity.setText(seaCreatures.getShadow());
         price.setText("" + seaCreatures.getPrice());
         time.setText(seaCreatures.getAvailability().getTime());
 

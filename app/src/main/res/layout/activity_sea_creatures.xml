@@ -145,14 +145,12 @@
 
         <Switch
             android:id="@+id/viewSwitch"
-            android:layout_width="150dp"
+            android:layout_width="90dp"
             android:layout_height="30dp"
-            android:thumb="@drawable/switch_select_image"
+            android:thumb="@drawable/switch_select"
             android:track="@drawable/switch_background"
-            android:textOn="Grid View"
-            android:textOff="List View"
             android:textAllCaps="false"
-            android:showText="true"/>
+            android:layout_gravity="center"/>
 
         <RadioGroup
             android:id="@+id/radioGroup"
