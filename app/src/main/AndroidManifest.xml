@@ -17,6 +17,7 @@
         <activity android:name="nooks.animalcrossingdictionary.VillagersDetailActivity"></activity>
         <activity android:name="nooks.animalcrossingdictionary.FishDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.SongsDetailActivity" />
+        <activity android:name="nooks.animalcrossingdictionary.SeaCreatureDetailActivity"/>
         <activity android:name="nooks.animalcrossingdictionary.BugsDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.FossilsDetailActivity" />
         <activity android:name="nooks.animalcrossingdictionary.SongsActivity" />

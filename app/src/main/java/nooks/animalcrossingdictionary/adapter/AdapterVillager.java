@@ -23,7 +23,7 @@ public class AdapterVillager extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static class MyViewHolder_villager_list extends RecyclerView.ViewHolder {
         public TextView name;
         public TextView species, gender, birth;
-        public ImageView icon;
+        public ImageView icon, genderIcon;
 
         public MyViewHolder_villager_list(View view) {
             super(view);
@@ -32,6 +32,7 @@ public class AdapterVillager extends RecyclerView.Adapter<RecyclerView.ViewHolde
             gender = view.findViewById(R.id.gender_info);
             birth = view.findViewById(R.id.birth_info);
             icon = view.findViewById(R.id.icon_image);
+            genderIcon = view.findViewById(R.id.gender_icon);
         }
     }
 
@@ -86,11 +87,15 @@ public class AdapterVillager extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (getItemViewType(position) == 1) {
             ((MyViewHolder_villager_list) holder).name.setText(listData.get(position).getName().getNameEUen());
             ((MyViewHolder_villager_list) holder).species.setText(listData.get(position).getSpecies());
-            ((MyViewHolder_villager_list) holder).gender.setText(listData.get(position).getGender());
+//            ((MyViewHolder_villager_list) holder).gender.setText(listData.get(position).getGender());
             ((MyViewHolder_villager_list) holder).birth.setText(listData.get(position).getBirthdayString());
             Glide.with(holder.itemView.getContext())
                     .load(listData.get(position).getIcon_uri())
                     .into(((MyViewHolder_villager_list) holder).icon);
+            if (listData.get(position).getGender().equals("Female"))
+                ((MyViewHolder_villager_list) holder).genderIcon.setImageResource(R.drawable.female);
+            else
+                ((MyViewHolder_villager_list) holder).genderIcon.setImageResource(R.drawable.male);
         } else if (getItemViewType(position) == 2) {
             ((MyViewHolder_villager_grid) holder).name.setText(listData.get(position).getName().getNameEUen());
             Glide.with(holder.itemView.getContext())

@@ -63,7 +63,7 @@ public class SeaCreaturesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bugs);
+        setContentView(R.layout.activity_sea_creatures);
 
         recyclerView = findViewById(R.id.recycleList);
         viewSwitch = findViewById(R.id.viewSwitch);
@@ -114,7 +114,9 @@ public class SeaCreaturesActivity extends AppCompatActivity {
                 SeaCreatureAdapter = resultName(SeaCreatureAdapter);
 
                 locationList = getSpeedList(SeaCreatureAdapter);
-                locationSelect = locationList.get(0);
+                if(locationSelect == "") {
+                    locationSelect = locationList.get(0);
+                }
                 spinnerAdapterLocation = new ArrayAdapter<>(SeaCreaturesActivity.this, android.R.layout.simple_spinner_item, locationList);
                 spinner_location.setAdapter(spinnerAdapterLocation);
                 spinnerAdapterLocation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -145,17 +147,17 @@ public class SeaCreaturesActivity extends AppCompatActivity {
                 SeaCreatureAdapter = resultLocation(SeaCreatureAdapter);
 
                 rarityList = getShadowList(SeaCreatureAdapter);
-                raritySelect = rarityList.get(0);
+                if(raritySelect == "")
+                    raritySelect = rarityList.get(0);
                 spinnerAdapterRarity = new ArrayAdapter<>(SeaCreaturesActivity.this, android.R.layout.simple_spinner_item, rarityList);
                 spinner_rarity.setAdapter(spinnerAdapterRarity);
                 spinnerAdapterRarity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                int position_rarity = spinnerAdapterRarity.getPosition(locationSelect);
-                spinner_location.setSelection(position_rarity);
 
                 if(rarityList.indexOf(raritySelect) != -1) {
                     spinner_rarity.setSelection(rarityList.indexOf(raritySelect), true);
                 } else {
-                    spinner_rarity.setSelection(0, true);
+                    int position_rarity = spinnerAdapterRarity.getPosition(raritySelect);
+                    spinner_rarity.setSelection(position_rarity);
                 }
 
                 spinner_rarity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
