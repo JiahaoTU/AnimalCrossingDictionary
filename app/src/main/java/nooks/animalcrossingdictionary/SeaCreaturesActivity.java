@@ -256,6 +256,17 @@ public class SeaCreaturesActivity extends AppCompatActivity {
 
         return result;
     }
+    public void reset(View view) {
+        switchSelect = "list";
+        viewSwitch.setChecked(false);
+        radioSelect = "All";
+        RadioButton button_all = (RadioButton) nsChooseRadio.findViewById(R.id.all);
+        nsChooseRadio.check(button_all.getId());
+        locationSelect = "All speed";
+        raritySelect = "All shadow";
+        nameSearch = "";
+        getData();
+    }
 
     private List<SeaCreatures> resultShadow(List<SeaCreatures> seaCreaturesList) {
         List<SeaCreatures> result = new ArrayList<>();
