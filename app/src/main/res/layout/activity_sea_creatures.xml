@@ -209,6 +209,7 @@
             android:layout_weight="2"
             android:text="Search"
             android:textAllCaps="false"
+            android:background="@drawable/button_shape_search"
             android:onClick="search"/>
 
     </LinearLayout>
