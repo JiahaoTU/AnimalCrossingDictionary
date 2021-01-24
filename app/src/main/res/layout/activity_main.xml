@@ -33,6 +33,7 @@
                 android:gravity="center"
                 android:onClick="fishButton"
                 android:text="Fish"
+                android:background="@drawable/button_shape_orange"
                 android:textAllCaps="false" />
 
             <Button
@@ -42,6 +43,7 @@
                 android:gravity="center"
                 android:onClick="bugsButton"
                 android:text="Bugs"
+                android:background="@drawable/button_shape_yellow"
                 android:textAllCaps="false" />
 
         </LinearLayout>
@@ -58,6 +60,7 @@
                 android:layout_height="60dp"
                 android:onClick="seaCreaturesButton"
                 android:text="Sea Creatures"
+                android:background="@drawable/button_shape_yellow"
                 android:textAllCaps="false" />
 
             <Button
@@ -66,6 +69,7 @@
                 android:layout_height="60dp"
                 android:onClick="fossilsButton"
                 android:text="Fossils"
+                android:background="@drawable/button_shape_orange"
                 android:textAllCaps="false" />
 
         </LinearLayout>
@@ -82,6 +86,7 @@
                 android:layout_height="60dp"
                 android:onClick="villagersButton"
                 android:text="Villagers"
+                android:background="@drawable/button_shape_orange"
                 android:textAllCaps="false" />
 
             <Button
@@ -90,6 +95,7 @@
                 android:layout_height="60dp"
                 android:onClick="songsButton"
                 android:text="Songs"
+                android:background="@drawable/button_shape_yellow"
                 android:textAllCaps="false" />
 
         </LinearLayout>
