@@ -67,7 +67,10 @@ public class SeaCreatureDetailActivity extends AppCompatActivity {
         location.setText(seaCreatures.getSpeed());
         rarity.setText(seaCreatures.getShadow());
         price.setText("" + seaCreatures.getPrice());
-        time.setText(seaCreatures.getAvailability().getTime());
+        if (seaCreatures.getAvailability().getTime().equals(""))
+            time.setText("All day");
+        else
+            time.setText(seaCreatures.getAvailability().getTime());
 
         blathers.setImageResource(R.drawable.blathers);
         museumPhrase.setText(seaCreatures.getMuseumPhrase());
