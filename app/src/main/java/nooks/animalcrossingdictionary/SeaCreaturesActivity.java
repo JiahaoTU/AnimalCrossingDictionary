@@ -63,7 +63,7 @@ public class SeaCreaturesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bugs);
+        setContentView(R.layout.activity_sea_creatures);
 
         recyclerView = findViewById(R.id.recycleList);
         viewSwitch = findViewById(R.id.viewSwitch);

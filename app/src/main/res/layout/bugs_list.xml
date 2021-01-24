@@ -46,11 +46,11 @@
 
             <ImageView
                 android:id="@+id/loc_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_marginTop="5dp"
-                android:scaleType="fitCenter"
-                android:background="@drawable/location" />
+                android:background="@drawable/location"
+                android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/location_info"
@@ -78,22 +78,22 @@
 
                 <ImageView
                     android:id="@+id/rarity_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="14dp"
+                    android:layout_height="24dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="fitCenter"
-                    android:background="@drawable/rarity" />
+                    android:background="@drawable/rarity"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/rarity_info"
-                    android:layout_width="match_parent"
+                    android:layout_width="103dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="8dp"
-                    android:paddingLeft="5dp"
                     android:gravity="center|left"
+                    android:paddingLeft="5dp"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
