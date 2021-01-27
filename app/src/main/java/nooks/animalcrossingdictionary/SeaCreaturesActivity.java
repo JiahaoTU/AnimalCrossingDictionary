@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -42,6 +43,7 @@ public class SeaCreaturesActivity extends AppCompatActivity {
     private EditText searchName;
     private RadioGroup nsChooseRadio;
     private Spinner spinner_location, spinner_rarity;
+    private TextView resultNum;
 
     private String switchSelect = "";
     private String radioSelect = "";
@@ -71,6 +73,7 @@ public class SeaCreaturesActivity extends AppCompatActivity {
         nsChooseRadio = findViewById(R.id.radioGroup);
         spinner_location = findViewById(R.id.location_spinner);
         spinner_rarity = findViewById(R.id.rarity_spinner);
+        resultNum = findViewById(R.id.resultNum);
 
         splitLine = new DividerItemDecoration(SeaCreaturesActivity.this, DividerItemDecoration.VERTICAL);
 
@@ -186,10 +189,12 @@ public class SeaCreaturesActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(new LinearLayoutManager(SeaCreaturesActivity.this));
                     recyclerView.addItemDecoration(splitLine);
                     recyclerView.setAdapter(adapterList);
+                    resultNum.setText(adapterList.getItemCount() + " results");
                 }else if(switchSelect.equals("grid")) {
                     recyclerView.setLayoutManager(new GridLayoutManager(SeaCreaturesActivity.this, 3));
                     recyclerView.removeItemDecoration(splitLine);
                     recyclerView.setAdapter(adapterGrid);
+                    resultNum.setText(adapterGrid.getItemCount() + " results");
                 }
             }
 

@@ -242,6 +242,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Reset"
+            android:background="@drawable/button_shape_search"
             android:onClick="reset"/>
 
         <TextView
