@@ -66,7 +66,10 @@ public class BugsDetailActivity extends AppCompatActivity {
         location.setText(bugs.getAvailability().getLocation());
         rarity.setText(bugs.getAvailability().getRarity());
         price.setText("" + bugs.getPrice());
-        time.setText(bugs.getAvailability().getTime());
+        if (bugs.getAvailability().getTime().equals(""))
+            time.setText("All day");
+        else
+            time.setText(bugs.getAvailability().getTime());
 
         blathers.setImageResource(R.drawable.blathers);
         museumPhrase.setText(bugs.getMuseumPhrase());

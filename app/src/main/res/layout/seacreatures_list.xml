@@ -47,8 +47,8 @@
 
             <ImageView
                 android:id="@+id/loc_icon"
-                android:layout_width="20dp"
-                android:layout_height="18dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:background="@drawable/speed"
@@ -79,8 +79,8 @@
 
                 <ImageView
                     android:id="@+id/rarity_icon"
-                    android:layout_width="14dp"
-                    android:layout_height="24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"
                     android:scaleType="fitCenter"
